@@ -1,6 +1,6 @@
-<!-- <div class="nav">
+<div class="nav">
       <div class="logo">Company</div>
-      <div class="nav-links-container">
+      <div class="nav-links-container" [class.side-bar-open]="isSidebarOpen === true">
          <ul class="nav-links">
             <li>
                <a href="#">Products</a>
@@ -19,29 +19,42 @@
             <li>
                <a href="#">Register</a>
             </li>
-            <li>
+            <li class="login-nav-btn">
                <button type="button" class="btn-primary">Login</button>
             </li>
          </ul>
       </div>
-      <div class="burger">
+      <div class="burger" (click)="onSidebarOpen()">
          <div class="burger-line"></div>
          <div class="burger-line"></div>
          <div class="burger-line"></div>
       </div>
-   </div> -->
-
+   </div>
+<!-- 
    <nav>
       <div class="logo">logo</div>
-      <ul>
-         <li>
-            <a href="#">asdasd</a>
-         </li>
-         <li>
-            <a href="#">asdasd</a>
-         </li>
-         <li>
-            <a href="#">asdasd</a>
-         </li>
-      </ul>
-   </nav>
+      <div class="nav-links-container">
+         <ul>
+            <li>
+               <a href="#">Product</a>
+            </li>
+            <li>
+               <a href="#">About</a>
+            </li>
+            <li>
+               <a href="#">Contact</a>
+            </li>
+         </ul>
+         <ul>
+            <li>
+               <a href="#">Cart</a>
+            </li>
+            <li>
+               <a href="#">Register</a>
+            </li>
+            <li>
+               <a href="#">Login</a>
+            </li>
+         </ul>
+      </div>
+   </nav> -->

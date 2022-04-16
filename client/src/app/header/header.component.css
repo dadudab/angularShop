@@ -1,4 +1,4 @@
-/* .nav {
+.nav {
    height: 8vh;
    display: flex;
    align-items: center;
@@ -9,6 +9,7 @@
 .logo {
    font-size: 35px;
    font-weight: 600;
+   margin-left: 30px;
 }
 
 .nav-links-container {
@@ -36,6 +37,7 @@
    display: none;
    height: 40px;
    cursor: pointer;
+   margin-right: 30px;
 }
 
 .burger-line {
@@ -43,7 +45,7 @@
    width: 35px;
    border-radius: 10px;
    background-color: #000000;
-   margin-right: 100px;
+   /* margin-right: 100px; */
 }
 
 @media screen and (max-width: 1150px) {
@@ -62,13 +64,58 @@
       display: flex;
       flex-direction: column-reverse;
       justify-content: flex-end;
+      width: 100%;
+      height: 92vh;
+      transform: translateX(-100%);
+      transition: all 300ms;
+   }
+
+   .side-bar-open {
+      transform: translateX(0);
    }
 
    .nav-links {
+      width: auto;
+      flex-direction: column;
+      align-items: flex-start;
    }
-} */
 
-nav {
+   .nav-links:last-of-type {
+      flex-direction: column-reverse;
+   }
+
+   .nav-links > li {
+      /* background-color: green; */
+      /* padding: 1rem; */
+      width: 100%;
+   }
+
+   .nav-links > li > a {
+      display: flex;
+      padding: 15px 0 15px 30px;
+   }
+   .nav-links > li > a:hover {
+      padding-left: 100px;
+   }
+
+   .login-nav-btn button {
+      background-color: transparent;
+      /* display: flex; */
+      width: 100%;
+      padding: 15px 0 15px 30px;
+      text-align: left;
+      color: #513ADE;
+   }
+
+   .login-nav-btn button:hover {
+      margin-left: 30px;
+   }
+}
+
+
+
+
+/* nav {
    width: 100%;
    background-color: green;
    display: flex;
@@ -101,4 +148,35 @@ ul > li > a {
       background-color: red;
       width: 100%;
    }
+} */
+
+
+
+
+/* please man */
+/* 
+nav {
+   width: 100%;
+   height: 8vh;
+   background-color: gray;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }
+
+.logo {
+   font-size: 35px;
+   font-weight: 600;
+}
+
+.nav-links-container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+ul {
+   display: flex;
+   align-items: center;
+}
+ */

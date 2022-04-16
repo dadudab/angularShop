@@ -38,4 +38,5 @@ ul {
    border-radius: 10px;
    background-color: #513ADE;
    border: none;
+   cursor: pointer;
 }
