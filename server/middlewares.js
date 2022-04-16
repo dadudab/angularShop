@@ -1,6 +1,7 @@
 const { userSchema, productSchema } = require('./schema');
 const jwt = require('jsonwebtoken');
 const User = require('./models/user');
+const Product = require('./models/product');
 
 module.exports.validateUser = (req, res, next) => {
   const { error } = userSchema.validate(req.body);
@@ -52,6 +53,26 @@ module.exports.isUserOwner = async (req, res, next) => {
       return res
         .status(405)
         .json({ message: 'You are not allowed to do this' });
+    }
+
+    return next();
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Something went wrong' });
+  }
+};
+
+module.exports.isProductOwner = async (req, res, next) => {
+  const { productId } = req.params;
+
+  try {
+    const foundProduct = await Product.findById(productId);
+    if (!foundProduct) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    if (!foundProduct.user.equals(req.user._id)) {
+      return res.status(405).json({ message: 'Not allowed' });
     }
 
     return next();
