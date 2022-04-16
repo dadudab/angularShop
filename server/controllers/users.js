@@ -43,13 +43,13 @@ module.exports.registerUser = async (req, res) => {
     const token = jwt.sign(
       {
         _id: newUser._id,
-        // firstName: newUser.firstName,
-        // lastName: newUser.lastName,
-        // city: newUser.city,
-        // address: newUser.address,
-        // postalCode: newUser.postalCode,
-        // username: newUser.username,
-        // email: newUser.email
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        city: newUser.city,
+        address: newUser.address,
+        postalCode: newUser.postalCode,
+        username: newUser.username,
+        email: newUser.email,
       },
       process.env.JWT_SECRET,
       {
@@ -57,7 +57,7 @@ module.exports.registerUser = async (req, res) => {
       }
     );
 
-    return res.status(200).json({ user: newUser, token });
+    return res.status(200).json({ token });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: 'Something went wrong' });
@@ -80,10 +80,17 @@ module.exports.loginUser = async (req, res) => {
   const token = jwt.sign(
     {
       _id: existingUser._id,
+      firstName: existingUser.firstName,
+      lastName: existingUser.lastName,
+      city: existingUser.city,
+      address: existingUser.address,
+      postalCode: existingUser.postalCode,
+      username: existingUser.username,
+      email: existingUser.email,
     },
     process.env.JWT_SECRET,
     { expiresIn: '1h' }
   );
 
-  return res.status(200).json({ user: existingUser, token });
+  return res.status(200).json({ token });
 };

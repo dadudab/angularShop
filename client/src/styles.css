@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Sora&display=swap');
+
+body {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   min-height: 100vh;
+   min-width: 100%;
+   font-family: 'Inter', sans-serif;
+}
+
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+   margin: 0;
+   padding: 0;
+}
+
+ol,
+ul {
+   list-style: none;
+}
+
+.btn-primary {
+   color: #ffffff;
+   font-size: 22px;
+   padding: 10px 20px;
+   border-radius: 10px;
+   background-color: #513ADE;
+   border: none;
+}
