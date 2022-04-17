@@ -14,7 +14,12 @@
          </ul>
          <ul class="nav-links">
             <li>
-               <a href="#">Cart</a>
+               <div class="basket-container">
+                  <a href="#">
+                     <img src="../../assets/shopping-basket.png" alt="Basket">
+                  </a>
+                  <span>10</span>
+               </div>
             </li>
             <li>
                <a href="#">Register</a>
@@ -24,37 +29,16 @@
             </li>
          </ul>
       </div>
+      <div class="basket-container small-screen-basket">
+         <a href="#">
+            <img src="../../assets/shopping-basket.png" alt="Basket">
+         </a>
+         <span>10</span>
+      </div>
       <div class="burger" (click)="onSidebarOpen()">
          <div class="burger-line"></div>
          <div class="burger-line"></div>
          <div class="burger-line"></div>
       </div>
    </div>
-<!-- 
-   <nav>
-      <div class="logo">logo</div>
-      <div class="nav-links-container">
-         <ul>
-            <li>
-               <a href="#">Product</a>
-            </li>
-            <li>
-               <a href="#">About</a>
-            </li>
-            <li>
-               <a href="#">Contact</a>
-            </li>
-         </ul>
-         <ul>
-            <li>
-               <a href="#">Cart</a>
-            </li>
-            <li>
-               <a href="#">Register</a>
-            </li>
-            <li>
-               <a href="#">Login</a>
-            </li>
-         </ul>
-      </div>
-   </nav> -->
+   
