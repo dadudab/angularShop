@@ -1,0 +1,16 @@
+.container {
+   width: 90%;
+   margin: 1rem auto;
+   background-color: #EBEFFF;
+}
+
+.content {
+   padding: 1rem;
+}
+
+@media screen and (min-width: 1000px) {
+   .container {
+      width: 100%;
+      margin: 0;
+   }
+}

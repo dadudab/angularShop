@@ -1,4 +1,4 @@
-.main {
+.content {
    min-height: 92vh;
    width: 100%;
    /* background-color: red; */
@@ -27,7 +27,7 @@
 }
 
 @media screen and (min-width:768px) {
-   .main {
+   .content {
       display: flex;
       align-items: center;
    }

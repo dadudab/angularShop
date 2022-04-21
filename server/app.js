@@ -1,11 +1,19 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const PORT = process.env.PORT || 3000;
 
 const userRoutes = require('./routes/user');
 const productRoutes = require('./routes/product');
+
+// cors config
+app.use(
+  cors({
+    origin: 'http://localhost:4200',
+  })
+);
 
 // json config
 app.use(express.json());

@@ -1,0 +1,29 @@
+.container {
+   /* padding: 1rem; */
+   width: 90%;
+   margin: 0 auto;
+   background-color: red;
+}
+
+ul {
+   padding: 1rem;
+}
+
+/* @media screen and (min-width: 1000px) {
+   .container {
+      width: 100%;
+      margin: 0;
+   }
+} */
+
+
+
+/* 
+input {
+   height: 50px;
+   width: 50px;
+}
+
+label {
+   font-size: 50px;
+} */
