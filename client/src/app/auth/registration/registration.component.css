@@ -1,0 +1,41 @@
+.container {
+   width: 90%;
+   max-width: 26rem;
+   margin: 3rem auto;
+   background-color: #EBEFFF;
+}
+
+.content {
+   padding: 1rem;
+}
+
+h2 {
+   margin-bottom: 1rem;
+}
+
+.form-control {
+   display: flex;
+   flex-direction: column;
+   margin-top: 0.5rem;
+}
+
+button {
+   width: 100%;
+   margin: 1rem 0;
+}
+
+@media screen and (min-width: 550px) {
+   .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+   }
+
+   .address {
+      width: 65%;
+   }
+
+   .postal-code {
+      width: 25%;
+   }
+}

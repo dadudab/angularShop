@@ -1,9 +1,11 @@
 <div class="nav">
-      <div class="logo">Company</div>
+      <a class="logo-link" routerLink="/home">
+         <div class="logo">Company</div>
+      </a>
       <div class="nav-links-container" [class.side-bar-open]="isSidebarOpen === true">
          <ul class="nav-links">
             <li>
-               <a href="#">Products</a>
+               <a routerLink="/products">Products</a>
             </li>
             <li>
                <a href="#">About</a>
@@ -16,22 +18,22 @@
             <li>
                <div class="basket-container">
                   <a href="#">
-                     <img src="../../assets/shopping-basket.png" alt="Basket">
+                     <img src="../../assets/shopping-cart.png" alt="Cart">
                   </a>
                   <span>10</span>
                </div>
             </li>
             <li>
-               <a href="#">Register</a>
+               <a routerLink="/registration">Register</a>
             </li>
             <li class="login-nav-btn">
-               <button type="button" class="btn-primary">Login</button>
+               <button type="button" class="btn-primary" (click)="onLogin()">Login</button>
             </li>
          </ul>
       </div>
       <div class="basket-container small-screen-basket">
          <a href="#">
-            <img src="../../assets/shopping-basket.png" alt="Basket">
+            <img src="../../assets/shopping-cart.png" alt="Cart">
          </a>
          <span>10</span>
       </div>

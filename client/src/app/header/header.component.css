@@ -6,6 +6,11 @@
    width: 100%;
 }
 
+.logo-link {
+   text-decoration: none;
+   color: #000000;
+}
+
 .logo {
    font-size: 35px;
    font-weight: 600;
