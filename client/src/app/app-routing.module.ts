@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'products', component: ProductsComponent, resolve: { products: ProductsResolver}},
   { path: 'registration', component: RegistrationComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ]
 
 @NgModule({

@@ -15,6 +15,7 @@
    font-size: 35px;
    font-weight: 600;
    margin-left: 20px;
+   user-select: none;
 }
 
 .nav-links-container {
@@ -54,7 +55,7 @@
    /* margin-right: 100px; */
 }
 
-.basket-container > span {
+.cart-container > span {
    position: relative;
    top: -17px;
    font-size: 19px;
@@ -66,7 +67,7 @@ img {
    width: 30px;
 }
 
-.small-screen-basket {
+.small-screen-cart {
    display: none;
 }
 
@@ -120,7 +121,7 @@ img {
       padding-left: 100px;
    }
 
-   .login-nav-btn button {
+   .nav-btn button {
       background-color: transparent;
       /* display: flex; */
       width: 100%;
@@ -129,7 +130,7 @@ img {
       color: #513ADE;
    }
 
-   .login-nav-btn button:hover {
+   .nav-btn button:hover {
       margin-left: 30px;
    }
 
@@ -137,7 +138,7 @@ img {
       display: none;
    }
 
-   .small-screen-basket {
+   .small-screen-cart {
       display: block;
    }
 }

@@ -1,45 +1,63 @@
-<div class="container">
+<h1 *ngIf="isLoading">Loading...</h1>
+<h1 *ngIf="error">{{ error }}</h1>
+<div class="container" *ngIf="!isLoading">
    <div class="content">
       <h2>Registration</h2>
-      <form action="">
+      <form (ngSubmit)="onRegister(registerForm)" #registerForm="ngForm">
          <div class="wrapper">
             <div class="form-control">
                <label for="firstName">First Name</label>
-               <input type="text" id="firstName" name="firstName" class="basic-input">
+               <input type="text" id="firstName" name="firstName" class="basic-input"
+                required ngModel #firstName="ngModel">
+               <small *ngIf="!firstName.valid && firstName.touched">First name must not be empty</small>
             </div>
             <div class="form-control">
                <label for="lastName">Last Name</label>
-               <input type="text" id="lastName" name="lastName" class="basic-input">
+               <input type="text" id="lastName" name="lastName" class="basic-input"
+               required ngModel #lastName="ngModel">
+               <small *ngIf="!lastName.valid && lastName.touched">Last name must not be empty</small>
             </div>
          </div>
          <div class="form-control">
             <label for="city">City</label>
-            <input type="text" id="city" name="city" class="basic-input">
+            <input type="text" id="city" name="city" class="basic-input"
+            required ngModel #city="ngModel">
+            <small *ngIf="!city.valid && city.touched">City must not be empty</small>
          </div>
          <div class="wrapper">
             <div class="form-control address">
                <label for="address">Address</label>
-               <input type="text" id="address" name="address" class="basic-input">
+               <input type="text" id="address" name="address" class="basic-input"
+               required ngModel #address="ngModel">
+               <small *ngIf="!address.valid && address.touched">Address must not be empty</small>
             </div>
             <div class="form-control postal-code">
                <label for="postalCode">Postal Code</label>
-               <input type="text" id="postalCode" name="postalCode" class="basic-input">
+               <input type="text" id="postalCode" name="postalCode" class="basic-input"
+               required ngModel #postalCode="ngModel">
+               <small *ngIf="!postalCode.valid && postalCode.touched">Invalid data</small>
             </div>
          </div>
          <div class="form-control">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" class="basic-input">
+            <input type="email" id="email" name="email" class="basic-input"
+            required email ngModel #email="ngModel">
+            <small *ngIf="!email.valid && email.touched">Email is not valid</small>
          </div>
          <div class="form-control">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" class="basic-input">
+            <input type="text" id="username" name="username" class="basic-input"
+            required ngModel #username="ngModel">
+            <small *ngIf="!username.valid && username.touched">Username must not be empty</small>
          </div>
          <div class="form-control">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="basic-input">
+            <input type="password" id="password" name="password" class="basic-input"
+            required ngModel #password="ngModel">
+            <small *ngIf="!password.valid && password.touched">Password must not be empty</small>
          </div>
-         <button type="submit" class="btn-primary-small">Register</button>
+         <button [disabled]="!registerForm.valid" type="submit" class="btn-primary-small">Register</button>
       </form>
-      <a href="#">Already registered? Login here</a>
+      <a routerLink="/login">Already registered? Login here</a>
    </div>
 </div>

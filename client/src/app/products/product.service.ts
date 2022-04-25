@@ -7,11 +7,11 @@ import { Product } from '../shared/product.model';
 })
 export class ProductService {
 
-  apiUrl = 'http://localhost:3000';
+  configUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
   getProducts() {
-    return this.http.get<Product[]>(this.apiUrl + '/products');
+    return this.http.get<Product[]>(this.configUrl + '/products');
   }
 }

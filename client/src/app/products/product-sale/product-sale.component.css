@@ -21,10 +21,9 @@ img {
 button {
    margin-top: 0.5rem;
 }
-/* 
+
 @media screen and (min-width: 1000px) {
-   .container {
-      width: 100%;
-      margin: 0;
+   h3 {
+      text-align: center;
    }
-} */
+}

@@ -16,22 +16,25 @@
          </ul>
          <ul class="nav-links">
             <li>
-               <div class="basket-container">
+               <div class="cart-container">
                   <a href="#">
                      <img src="../../assets/shopping-cart.png" alt="Cart">
                   </a>
                   <span>10</span>
                </div>
             </li>
-            <li>
+            <li *ngIf="!isAuth">
                <a routerLink="/registration">Register</a>
             </li>
-            <li class="login-nav-btn">
+            <li *ngIf="!isAuth" class="nav-btn">
                <button type="button" class="btn-primary" (click)="onLogin()">Login</button>
+            </li>
+            <li *ngIf="isAuth" class="nav-btn">
+               <button type="button" class="btn-primary">Logout</button>
             </li>
          </ul>
       </div>
-      <div class="basket-container small-screen-basket">
+      <div class="cart-container small-screen-cart">
          <a href="#">
             <img src="../../assets/shopping-cart.png" alt="Cart">
          </a>

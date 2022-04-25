@@ -50,6 +50,11 @@ ul {
    cursor: pointer;
 }
 
+.btn-primary:disabled, .btn-primary-small:disabled {
+   cursor: not-allowed;
+   background-color: #867cc5;
+}
+
 .basic-input {
    height: 30px;
    border-radius: 5px;
@@ -60,4 +65,8 @@ ul {
 .basic-input:focus {
    outline: none;
    border: 2px solid #513ADE;
+}
+
+small {
+   color: red;
 }

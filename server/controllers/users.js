@@ -50,6 +50,7 @@ module.exports.registerUser = async (req, res) => {
         postalCode: newUser.postalCode,
         username: newUser.username,
         email: newUser.email,
+        tokenExpiresIn: 3540,
       },
       process.env.JWT_SECRET,
       {
@@ -87,6 +88,7 @@ module.exports.loginUser = async (req, res) => {
       postalCode: existingUser.postalCode,
       username: existingUser.username,
       email: existingUser.email,
+      tokenExpiresIn: 3540,
     },
     process.env.JWT_SECRET,
     { expiresIn: '1h' }
