@@ -18,7 +18,7 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onRegister(form: NgForm) {
+  onRegisterUser(form: NgForm) {
     if(!form.valid) {
       return;
     }

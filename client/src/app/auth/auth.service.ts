@@ -31,7 +31,40 @@ export class AuthService {
   }
 
   loginUser(username: string, password: string) {
+    return this.http.post<IAuthResponse>(this.configUrl + '/users/login', {
+      username,
+      password
+    })
+      .pipe(
+        tap(resData => {
+          console.log(resData);
+          this.handleAuthentication(resData.token);
+        })
+      )
+  }
 
+  autoLogin() {
+    const token = localStorage.getItem('token');
+    const tokenExpirationDate = +localStorage.getItem('tokenExpirationDate');
+
+    if(!token || !tokenExpirationDate) {
+      console.log('no token info');
+      return;
+    }
+
+    const currentTime = Date.now();
+    if(currentTime > tokenExpirationDate) {
+      console.log('token expired');
+      return;
+    }
+    
+    this.handleAuthentication(token);
+  }
+
+  logout() {
+    this.user.next(null);
+    localStorage.removeItem('token');
+    localStorage.removeItem('tokenExpirationDate');
   }
 
   private handleAuthentication(token: string) {

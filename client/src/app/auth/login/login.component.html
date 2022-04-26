@@ -1,17 +1,19 @@
-<div class="container">
+<h1 *ngIf="error">{{ error }}</h1>
+<h1 *ngIf="isLoading">Loading...</h1>
+<div *ngIf="!isLoading" class="container">
    <div class="content">
       <h2>Login</h2>
-      <form action="">
+      <form (ngSubmit)="onLoginUser(loginForm)" #loginForm="ngForm">
          <div class="form-control">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" class="basic-input">
+            <input type="text" id="username" name="username" class="basic-input" required ngModel>
          </div>
          <div class="form-control">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="basic-input">
+            <input type="password" id="password" name="password" class="basic-input" required ngModel>
          </div>
-         <button class="btn-primary-small">Login</button>
-         <a href="#">No account? Register here</a>
+         <button [disabled]="!loginForm.valid" class="btn-primary-small" type="submit">Login</button>
+         <a routerLink="/registration">No account? Register here</a>
       </form>
    </div>
 </div>
