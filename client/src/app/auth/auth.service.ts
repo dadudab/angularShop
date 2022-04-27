@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
@@ -17,8 +18,9 @@ export class AuthService {
 
   configUrl = 'http://localhost:3000';
   user = new BehaviorSubject<User>(null);
+  tokenExpirationTimer: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
   
   registerUser(userData: Object) {
     return this.http.post<IAuthResponse>(this.configUrl + '/users/register', userData)
@@ -57,19 +59,10 @@ export class AuthService {
       console.log('token expired');
       return;
     }
-    
-    this.handleAuthentication(token);
-  }
 
-  logout() {
-    this.user.next(null);
-    localStorage.removeItem('token');
-    localStorage.removeItem('tokenExpirationDate');
-  }
-
-  private handleAuthentication(token: string) {
+    const tokenExpiresIn = tokenExpirationDate - Date.now();
+    console.log(tokenExpiresIn);
     const decodedToken: any = jwt_decode(token);
-    const tokenExpirationDate = Date.now() + decodedToken.tokenExpiresIn * 1000;
     const user = new User(
       decodedToken._id,
       decodedToken.firstName,
@@ -79,12 +72,52 @@ export class AuthService {
       decodedToken.postalCode,
       decodedToken.email,
       decodedToken.username,
-      decodedToken.password,
+      // decodedToken.password,
       token,
       tokenExpirationDate
     );
     this.user.next(user);
-    
+    this.autoLogout(tokenExpiresIn);
+  }
+
+  logout() {
+    this.user.next(null);
+    localStorage.removeItem('token');
+    localStorage.removeItem('tokenExpirationDate');
+    this.router.navigate(['/home']);
+    if(this.tokenExpirationTimer) {
+      clearTimeout(this.tokenExpirationTimer);
+    }
+    this.tokenExpirationTimer = null;
+  }
+
+  autoLogout(tokenExpiresIn: number) {
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.logout();
+      console.log('auto logout');
+    }, tokenExpiresIn);
+  }
+
+  private handleAuthentication(token: string) {
+    const decodedToken: any = jwt_decode(token);
+    const tokenExpirationDate = Date.now() + decodedToken.tokenExpiresIn * 1000;
+    const tokenExpiresIn = decodedToken.tokenExpiresIn * 1000;
+
+    const user = new User(
+      decodedToken._id,
+      decodedToken.firstName,
+      decodedToken.lastName,
+      decodedToken.city,
+      decodedToken.address,
+      decodedToken.postalCode,
+      decodedToken.email,
+      decodedToken.username,
+      // decodedToken.password,
+      token,
+      tokenExpirationDate
+    );
+    this.user.next(user);
+    this.autoLogout(tokenExpiresIn);
     localStorage.setItem('token', token);
     localStorage.setItem('tokenExpirationDate', JSON.stringify(tokenExpirationDate));
   }

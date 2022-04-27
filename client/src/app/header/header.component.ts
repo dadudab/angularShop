@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     console.log(this.isAuth);
     this.userSub = this.authService.user.subscribe(user => {
       this.isAuth = !!user;
+      console.log(user);
     })
   }
 
@@ -28,7 +29,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onLogin() {
-    this.router.navigate(['login']);
+    this.router.navigate(['/login']);
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 
   ngOnDestroy(): void {

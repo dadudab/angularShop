@@ -7,7 +7,7 @@ export class User {
    postalCode: string;
    email: string;
    username: string;
-   password: string;
+   // password: string;
    token: string;
    tokenExpirationDate: number;
 
@@ -20,7 +20,7 @@ export class User {
       postalCode: string,
       email: string, 
       username: string, 
-      password: string, 
+      // password: string, 
       token: string, 
       tokenExpirationDate: number
       ) {
@@ -32,7 +32,7 @@ export class User {
          this.postalCode = postalCode;
          this.email = email;
          this.username = username;
-         this.password = password;
+         // this.password = password;
          this.token = token;
          this.tokenExpirationDate = tokenExpirationDate;
       }
