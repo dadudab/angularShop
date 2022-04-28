@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 const userRoutes = require('./routes/user');
 const productRoutes = require('./routes/product');
+const cartRoutes = require('./routes/cart');
 
 // cors config
 app.use(
@@ -37,6 +38,7 @@ db.once('open', () => {
 // routes
 app.use('/', userRoutes);
 app.use('/', productRoutes);
+app.use('/', cartRoutes);
 
 app.listen(PORT, () => {
   console.log(`SERVER LISTENING ON PORT ${PORT}`);

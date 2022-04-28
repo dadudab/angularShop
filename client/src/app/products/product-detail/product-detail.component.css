@@ -64,14 +64,14 @@ button {
    }
 
    .img-container {
-      width: 60%;
+      width: 50%;
    }
    .img-container img {
       height: 700px;
    }
 
    .detail {
-      width: 40%;
+      width: 50%;
       padding: 1rem;
       display: flex;
       flex-direction: column;

@@ -1,6 +1,8 @@
-const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
+const User = require('../models/user');
+const Cart = require('../models/cart');
 
 module.exports.registerUser = async (req, res) => {
   const {
@@ -37,8 +39,12 @@ module.exports.registerUser = async (req, res) => {
       email,
       password: hashedPassword,
     });
+    const newCart = new Cart({
+      user: newUser._id,
+    });
 
     await newUser.save();
+    await newCart.save();
 
     const token = jwt.sign(
       {
