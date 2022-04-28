@@ -1,0 +1,41 @@
+<h1 *ngIf="isLoading">Loading...</h1>
+<h1 *ngIf="error && !isLoading">{{ error }}</h1>
+<h3 *ngIf="error && !product">No product with id {{ productId }}</h3>
+<!-- <div *ngIf="product" class="product-detail">
+   <p>{{ product.name }} </p>
+   <h3>{{ product.user }}</h3>
+</div> -->
+
+<div *ngIf="product" class="container">
+   <div class="content">
+      <div class="img-container">
+         <img src={{product.imageUrl}} alt={{product.name}}>
+      </div>
+      <div class="detail">
+         
+         <div>
+            <p class="product-name">{{ product.name }}</p>
+            <p class="price">{{ product.price | currency }}</p>   
+            <p class="desc">{{ product.description }}</p>
+         </div>
+
+         <div>
+
+            <div class="seller-detail">
+               <div class="seller-container">
+                  <img src="../../../assets/user.png" alt="profile" class="icon">
+                  <a href="#">Username</a>
+               </div>
+               <div class="seller-container">
+                  <img src="../../../assets/location.png" alt="location" class="icon">
+                  <span>Location</span>
+               </div>
+            </div>
+            <div class="actions">
+               <button class="btn-primary-small">Add to cart</button>
+               <button class="btn-secondary" (click)="onBackToProducts()">Back to products</button>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

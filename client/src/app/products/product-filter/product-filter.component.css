@@ -1,6 +1,7 @@
 .container {
    /* padding: 1rem; */
    width: 90%;
+   /* width: auto; */
    margin: 0 auto;
    background-color: #EBEFFF;
 }

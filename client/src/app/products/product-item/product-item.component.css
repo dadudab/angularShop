@@ -2,6 +2,8 @@ li {
    background-color: transparent;
    margin: 1rem 0;
    /* border-bottom: 1px solid yellow/; */
+   padding: 0.5rem;
+   border-bottom: 1px solid #808080;
 }
 
 li img {

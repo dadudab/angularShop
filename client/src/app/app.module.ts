@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { ProductsResolver } from './products/products-resolver.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ import { ProductSaleComponent } from './products/product-sale/product-sale.compo
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { LoginComponent } from './auth/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +29,15 @@ import { FormsModule } from '@angular/forms';
     ProductFilterComponent,
     ProductSaleComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

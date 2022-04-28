@@ -11,6 +11,10 @@ body {
    font-family: 'Inter', sans-serif;
 }
 
+* {
+   box-sizing: border-box;
+}
+
 body,
 h1,
 h2,
@@ -46,13 +50,25 @@ ul {
    padding: 7px 17px;
    border-radius: 10px;
    background-color: #513ADE;
-   border: none;
+   border: 1px solid #513ADE;
+   /* border: none; */
    cursor: pointer;
 }
 
 .btn-primary:disabled, .btn-primary-small:disabled {
    cursor: not-allowed;
    background-color: #867cc5;
+}
+
+.btn-secondary {
+   /* box-sizing: border-box; */
+   background-color: transparent;
+   border-radius: 10px;
+   padding: 7px 17px;
+   border: 1px solid #3f319c;
+   font-size: 18px;
+   color: #3f319c;
+   cursor: pointer;
 }
 
 .basic-input {
