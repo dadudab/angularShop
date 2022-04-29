@@ -1,3 +1,4 @@
+import { CartService } from './cart/cart.service';
 import { AuthService } from './auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,9 +11,10 @@ export class AppComponent implements OnInit{
   
   title = 'client';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private cartService: CartService) {}
 
   ngOnInit(): void {
     this.authService.autoLogin();
+    // this.cartService.getCart();
   }
 }

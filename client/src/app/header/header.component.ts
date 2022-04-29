@@ -1,5 +1,6 @@
+import { CartService } from './../cart/cart.service';
 import { AuthService } from './../auth/auth.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -13,16 +14,41 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isSidebarOpen = false;
   isAuth = false;
   userSub: Subscription;
+  cartSub: Subscription;
+  cartTotalProducts: number = 0;
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private cartService: CartService) { }
 
   ngOnInit(): void {
     console.log(this.isAuth);
     this.userSub = this.authService.user.subscribe(user => {
       this.isAuth = !!user;
       console.log(user);
+      if(this.isAuth) {
+        this.cartService.getCart(user.token).subscribe(cart => {
+          console.log(cart);
+          this.cartService.cart.subscribe(cart => {
+            this.cartTotalProducts = cart.totalProducts;
+          })
+        })
+      }
     })
+    
+    // this.cartSub = this.cartService.cart.subscribe(cart => {
+    //   console.log(this.cartTotalProducts);
+    //   if(this.isAuth) {
+    //     this.cartTotalProducts = cart.totalProducts;
+    //     console.log(this.cartTotalProducts);
+    //   }
+    // })
   }
+
+  // getUserCart(token: string) {
+  //   this.cartService.getCart(token).subscribe(res => {
+  //     this.
+  //   })
+  // }
+
 
   onSidebarOpen() {
     this.isSidebarOpen = !this.isSidebarOpen;
@@ -38,6 +64,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.userSub.unsubscribe();
+    this.cartSub.unsubscribe();
   }
 
 }

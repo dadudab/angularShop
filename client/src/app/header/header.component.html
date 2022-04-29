@@ -20,7 +20,8 @@
                   <a href="#">
                      <img src="../../assets/shopping-cart.png" alt="Cart">
                   </a>
-                  <span>0</span>
+                  <span *ngIf="!isAuth">0</span>
+                  <span *ngIf="isAuth">{{ cartTotalProducts }}</span>
                </div>
             </li>
             <li *ngIf="!isAuth">
@@ -38,7 +39,8 @@
          <a href="#">
             <img src="../../assets/shopping-cart.png" alt="Cart">
          </a>
-         <span>10</span>
+         <span *ngIf="!isAuth">0</span>
+         <span *ngIf="isAuth">{{ cartTotalProducts }}</span>
       </div>
       <div class="burger" (click)="onSidebarOpen()">
          <div class="burger-line"></div>

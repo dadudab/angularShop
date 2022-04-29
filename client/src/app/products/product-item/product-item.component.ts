@@ -1,3 +1,4 @@
+import { CartService } from './../../cart/cart.service';
 import { Product } from 'src/app/shared/product.model';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -14,5 +15,4 @@ export class ProductItemComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

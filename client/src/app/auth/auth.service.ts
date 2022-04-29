@@ -1,3 +1,4 @@
+import { CartService } from './../cart/cart.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -78,6 +79,7 @@ export class AuthService {
     );
     this.user.next(user);
     this.autoLogout(tokenExpiresIn);
+    // this.cartService.initialCart(token);
   }
 
   logout() {
@@ -120,5 +122,6 @@ export class AuthService {
     this.autoLogout(tokenExpiresIn);
     localStorage.setItem('token', token);
     localStorage.setItem('tokenExpirationDate', JSON.stringify(tokenExpirationDate));
+    // this.cartService.initialCart(token);
   }
 }

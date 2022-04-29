@@ -23,7 +23,7 @@ module.exports.getCart = async (req, res) => {
     });
 
     if (!cart) {
-      return res.statis(404).json({ message: 'Cannot find your cart' });
+      return res.status(404).json({ message: 'Cannot find your cart' });
     }
 
     return res.status(200).json(cart);
