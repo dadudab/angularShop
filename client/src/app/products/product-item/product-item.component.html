@@ -6,7 +6,9 @@
          <p>{{ product.price | currency}}</p>
       </div>
       <div class="wrapper">
-         <button type="button" class="btn-primary-small"><img src="../../../assets/shopping-cart.png" alt="Cart"></button>
+         <button (click)="onAddToCart(product._id)" type="button" class="btn-primary-small">
+            <img src="../../../assets/shopping-cart.png" alt="Cart">
+         </button>
          <a href="#">username</a>
       </div>
    </div>

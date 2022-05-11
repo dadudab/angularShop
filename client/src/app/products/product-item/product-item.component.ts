@@ -11,8 +11,16 @@ export class ProductItemComponent implements OnInit {
 
   @Input() product: Product;
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
+  }
+
+  onAddToCart(productId: string) {
+    this.cartService.addToCart(productId).subscribe(res => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    })
   }
 }

@@ -1,1 +1,15 @@
-<p>cart works!</p>
+<app-error-message *ngIf="!isLoading && error" [message]="error"></app-error-message>
+
+<h1 *ngIf="isLoading">Loading...</h1>
+
+<div *ngIf="!error && !isLoading" class="container">
+   <div class="wrapper">
+      <ul>
+         <!-- <li *ngFor="let product of cart.products">
+            <h1>{{product.product.name }} x{{product.amount}}</h1>
+            <button (click)="onAddToCart(product.product._id)">Add to cart</button>
+         </li> -->
+         <app-cart-item *ngFor="let cartItem of cart.products" [cartItem]="cartItem"></app-cart-item>
+      </ul>
+   </div>
+</div>

@@ -47,11 +47,10 @@ ul {
 .btn-primary-small {
    color: #ffffff;
    font-size: 18px;
-   padding: 7px 17px;
+   padding: 5px 13px;
    border-radius: 10px;
    background-color: #513ADE;
    border: 1px solid #513ADE;
-   /* border: none; */
    cursor: pointer;
 }
 

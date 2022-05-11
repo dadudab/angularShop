@@ -1,0 +1,9 @@
+.container {
+   width: 50%;
+   margin: 1rem auto;
+   background-color: red;
+}
+
+.wrapper {
+   padding: 0.7rem;
+}

@@ -85,7 +85,16 @@ module.exports.addProductToCart = async (req, res) => {
     userCart.totalAmount = updatedTotalAmount;
 
     await userCart.save();
-    return res.status(200).json(userCart);
+
+    const updatedCart = await Cart.findOne({ user: userId }).populate({
+      path: 'products',
+      populate: {
+        path: 'product',
+      },
+    });
+
+    return res.status(200).json(updatedCart);
+    // return res.status(200).json(userCart);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: 'Something went wrong' });

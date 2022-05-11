@@ -1,9 +1,8 @@
 import { RouterModule } from '@angular/router';
-import { ProductsResolver } from './products/products-resolver.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +17,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { ErrorMessageComponent } from './shared/error-message/error-message/error-message.component';
+import { CartItemComponent } from './cart/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { CartComponent } from './cart/cart.component';
     RegistrationComponent,
     LoginComponent,
     ProductDetailComponent,
-    CartComponent
+    CartComponent,
+    ErrorMessageComponent,
+    CartItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,13 @@ import { CartComponent } from './cart/cart.component';
     FormsModule,
     RouterModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

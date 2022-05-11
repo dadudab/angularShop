@@ -14,6 +14,9 @@ export class ProductListComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.products = this.route.snapshot.data.products;
+    // this.products = this.route.snapshot.data.products;
+    this.route.data.subscribe(data => {
+      this.products = data.products;
+    })
   }
 }

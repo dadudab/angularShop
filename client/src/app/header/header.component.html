@@ -17,7 +17,7 @@
          <ul class="nav-links">
             <li>
                <div class="cart-container">
-                  <a href="#">
+                  <a routerLink="/cart">
                      <img src="../../assets/shopping-cart.png" alt="Cart">
                   </a>
                   <span *ngIf="!isAuth">0</span>
@@ -36,7 +36,7 @@
          </ul>
       </div>
       <div class="cart-container small-screen-cart">
-         <a href="#">
+         <a routerLink="/cart">
             <img src="../../assets/shopping-cart.png" alt="Cart">
          </a>
          <span *ngIf="!isAuth">0</span>

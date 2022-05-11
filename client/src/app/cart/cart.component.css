@@ -1,0 +1,10 @@
+.container {
+   width: 90%;
+   max-width: 55rem;
+   margin: 3rem auto;
+   background-color: #ebefff;
+}
+
+.wrapper {
+   padding: 1rem;
+}
