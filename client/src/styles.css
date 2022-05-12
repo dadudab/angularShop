@@ -1,6 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Sora&display=swap');
+
+/* .light-theme {
+   --background-color: #ffffff;
+   --text-color: black;
+}
+
+.dark-theme {
+   --background-color: black;
+   --text-color: white;
+} */
 
 body {
    box-sizing: border-box;
@@ -9,6 +18,9 @@ body {
    min-height: 100vh;
    min-width: 100%;
    font-family: 'Inter', sans-serif;
+   /* background-color: var(--background-color);
+   color: var(--text-color);
+   transition: all 300ms ease; */
 }
 
 * {

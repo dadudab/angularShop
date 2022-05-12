@@ -3,6 +3,7 @@
       <app-product-filter></app-product-filter>
    </div>
    <div class="main">
+      <h1 *ngIf="error">{{ error }}</h1>
       <app-product-list></app-product-list>
    </div>
    <div class="sale">

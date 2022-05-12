@@ -20,6 +20,8 @@ import { CartComponent } from './cart/cart.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ErrorMessageComponent } from './shared/error-message/error-message/error-message.component';
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner/loading-spinner.component';
+
 
 @NgModule({
   declarations: [
@@ -37,13 +39,14 @@ import { CartItemComponent } from './cart/cart-item/cart-item.component';
     CartComponent,
     ErrorMessageComponent,
     CartItemComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule
+    RouterModule,
   ],
   providers: [
     {

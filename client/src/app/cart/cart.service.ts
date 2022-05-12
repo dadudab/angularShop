@@ -1,9 +1,9 @@
 import { AuthService } from './../auth/auth.service';
-import { BehaviorSubject, Subscription } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, of, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cart } from '../shared/cart.model';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 export interface ICartResponse {
   user: string;
@@ -18,10 +18,9 @@ export interface ICartResponse {
 })
 export class CartService {
 
-  token: string;
-
-  cart = new BehaviorSubject<Cart>(null);
   configUrl = 'http://localhost:3000';
+  cart = new BehaviorSubject<Cart>(null);
+  addToCartError = new BehaviorSubject<string>(null);
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 

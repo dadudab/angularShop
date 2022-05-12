@@ -5,6 +5,14 @@
    background-color: #EBEFFF;
 }
 
+.loading-spinner {
+   display: flex;
+   height: 40vh;
+   width: 100vw;
+   justify-content: center;
+   align-items: center;
+}
+
 .content {
    padding: 1rem;
 }

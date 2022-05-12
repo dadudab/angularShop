@@ -2,7 +2,7 @@ const Product = require('../models/product');
 
 module.exports.getProducts = async (req, res) => {
   try {
-    const products = await Product.find({});
+    const products = await Product.find({}).populate('user');
     return res.status(200).json(products);
   } catch (error) {
     console.log(error);

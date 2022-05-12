@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of, throwError } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 import { Product } from '../shared/product.model';
 
 @Injectable({
@@ -16,6 +18,14 @@ export class ProductService {
   }
 
   getProductById(id: string) {
-    return this.http.get<Product>(this.configUrl + '/products/' + id);
+    return this.http.get<Product>(this.configUrl + '/products/' + id).pipe(
+      catchError(error => {
+        console.log('Handling error locally and rethrowing it...', error);
+        if(!error.error.message) {
+          return throwError('Something went wrong');
+        }
+        return throwError(error.error.message);
+      }), 
+    )
   }
 }

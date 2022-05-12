@@ -1,5 +1,6 @@
 .container {
    display: flex;
+   margin-bottom: 1rem;
 }
 
 img {
@@ -43,5 +44,24 @@ img {
    display: flex;
    align-items: center;
    justify-content: space-between;
+   /* background-color: red; */
+}
 
+@media screen and (min-width: 768px) {
+   .content {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between
+   }
+
+   .product-name {
+      width: 150px;
+      max-width: 150px;
+   }
+
+   .detail-container {
+      margin-left: 3rem;
+      flex-direction: row-reverse;
+      width: 200px;
+   }
 }

@@ -6,10 +6,13 @@
          <p>{{ product.price | currency}}</p>
       </div>
       <div class="wrapper">
-         <button (click)="onAddToCart(product._id)" type="button" class="btn-primary-small">
+         <button *ngIf="!isLoading" (click)="onAddToCart(product._id)" type="button" class="btn-primary-small">
             <img src="../../../assets/shopping-cart.png" alt="Cart">
          </button>
-         <a href="#">username</a>
+         <div *ngIf="isLoading" class="loading-spinner">
+            <app-loading-spinner></app-loading-spinner>
+         </div>
+         <a href="#">{{ product.user.username }}</a>
       </div>
    </div>
 </li>

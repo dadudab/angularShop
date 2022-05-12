@@ -1,5 +1,8 @@
 <h1 *ngIf="error">{{ error }}</h1>
-<h1 *ngIf="isLoading">Loading...</h1>
+<div  *ngIf="isLoading" class="loading-spinner">
+   <app-loading-spinner></app-loading-spinner>
+</div>
+<!-- <app-loading-spinner></app-loading-spinner> -->
 <div *ngIf="!isLoading" class="container">
    <div class="content">
       <h2>Login</h2>

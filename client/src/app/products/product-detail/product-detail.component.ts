@@ -28,15 +28,27 @@ export class ProductDetailComponent implements OnInit {
     this.getProductById(this.productId);
   }
 
+  // getProductById(id) {
+  //   this.productService.getProductById(id).subscribe(response => {
+  //     this.product = response;
+  //     console.log(this.product);
+  //     this.isLoading = false;
+  //     this.error = null;
+  //   }, error => {
+  //     console.log(error);
+  //     this.error = error.error.message;
+  //     this.isLoading = false;
+  //   })
+  // }
+
   getProductById(id) {
     this.productService.getProductById(id).subscribe(response => {
+      console.log('HTTP response ', response);
       this.product = response;
-      console.log(this.product);
       this.isLoading = false;
-      this.error = null;
     }, error => {
-      console.log(error);
-      this.error = error.error.message;
+      console.log('HTTP error ', error);
+      this.error = error;
       this.isLoading = false;
     })
   }

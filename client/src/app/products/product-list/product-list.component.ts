@@ -17,6 +17,7 @@ export class ProductListComponent implements OnInit {
     // this.products = this.route.snapshot.data.products;
     this.route.data.subscribe(data => {
       this.products = data.products;
+      console.log(this.products);
     })
   }
 }
