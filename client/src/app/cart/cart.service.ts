@@ -20,9 +20,8 @@ export class CartService {
 
   configUrl = 'http://localhost:3000';
   cart = new BehaviorSubject<Cart>(null);
-  addToCartError = new BehaviorSubject<string>(null);
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient) { }
 
   getCart() {
     return this.http.get<ICartResponse>(this.configUrl + '/cart')
@@ -40,4 +39,11 @@ export class CartService {
         this.cart.next(data);
       }))
   }
+
+  removeFromCart(productId: string) {
+    return this.http.delete<ICartResponse>(`${this.configUrl}/cart/${productId}/delete`)
+      .pipe(tap(data => {
+        this.cart.next(data);
+      }))
+  } 
 }

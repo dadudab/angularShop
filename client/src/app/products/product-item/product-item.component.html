@@ -5,6 +5,11 @@
          <a [routerLink]="['/products', product._id]"><h2>{{ product.name }}</h2></a>
          <p>{{ product.price | currency}}</p>
       </div>
+      <div *ngIf="!isLoading && error" class="error">
+         <p style="color: red;">
+            {{error}}
+         </p>
+      </div>
       <div class="wrapper">
          <button *ngIf="!isLoading" (click)="onAddToCart(product._id)" type="button" class="btn-primary-small">
             <img src="../../../assets/shopping-cart.png" alt="Cart">

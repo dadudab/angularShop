@@ -7,23 +7,11 @@ import { Component, OnInit, OnChanges, SimpleChanges, Input, DoCheck, OnDestroy,
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit {
 
-  error: string;
-  errorSub: Subscription;
 
-  constructor(private cartService: CartService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    console.log('on init called');
-    this.errorSub = this.cartService.addToCartError.subscribe(error => {
-      console.log(error);
-      this.error = error;
-    })
-  }
-
-  ngOnDestroy(): void {
-    this.cartService.addToCartError.next(null);
-    this.errorSub.unsubscribe();
   }
 }

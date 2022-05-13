@@ -1,7 +1,7 @@
 import { Cart } from './../shared/cart.model';
 import { Subscription } from 'rxjs';
 import { CartService } from './cart.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { take, tap } from 'rxjs/operators';
 
 @Component({
@@ -9,7 +9,7 @@ import { take, tap } from 'rxjs/operators';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy{
 
   cartSub: Subscription;
   cart: Cart;
@@ -19,25 +19,14 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    // this.error = null;
-    // this.isLoading = true;
-    // this.cartService.getCart().subscribe(response => {
-    //   // this.error = null;
-    //   // this.isLoading = true;
-    //   this.cart = response;
-    //   console.log(response);
-    //   this.isLoading = false;
-    // }, error => {
-    //   this.error = error.error.message;
-    //   this.isLoading = false;
-    // })
     this.getInitCart();
+    console.log(this.cart);
   }
 
   getInitCart() {
     this.error = null;
     this.isLoading = true;
-    this.cartService.getCart().subscribe(response => {
+    this.cartSub = this.cartService.cart.subscribe(response => {
       this.cart = response;
       this.isLoading = false;
     }, error => {
@@ -46,9 +35,7 @@ export class CartComponent implements OnInit {
     })
   }
 
-  onAddToCart(id: string) {
-    this.cartService.addToCart(id).subscribe(res => {
-      this.cart = res;
-    })
+  ngOnDestroy(): void {
+    this.cartSub.unsubscribe();
   }
 }

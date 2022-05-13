@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { CartService } from './../cart.service';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cart-item',
@@ -8,11 +9,36 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CartItemComponent implements OnInit {
 
   @Input() cartItem;
+  isLoading = false;
+  error: string = null;
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     console.log(this.cartItem);
+  }
+
+  onAddToCart(productId: string) {
+    this.isLoading = true;
+    this.error = null;
+    this.cartService.addToCart(productId).subscribe(response => {
+      console.log(response);
+      this.isLoading = false;
+    }, error => {
+      this.error = error.error.message;
+      this.isLoading = false;
+    })
+  }
+
+  onRemoveFromCart(productId: string) {
+    this.isLoading = true;
+    this.error = null;
+    this.cartService.removeFromCart(productId).subscribe(response => {
+      this.isLoading = false;
+    }, error => {
+      this.error = error.error.message;
+      this.isLoading = false;
+    })
   }
 
 }

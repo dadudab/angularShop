@@ -1,4 +1,7 @@
 <li>
+   <div *ngIf="error" class="error-message">
+      <app-error-message [message]="error"></app-error-message>
+   </div>
    <div class="container">
       <img src={{cartItem.product.imageUrl}} alt={{cartItem.product.name}}>
       <div class="content">
@@ -14,10 +17,13 @@
             <!-- <button class="btn-secondary">-</button> -->
          <!-- </div> -->
          <div class="detail-container">
-            <div class="product-amount">
-               <button class="btn-secondary">+</button>
+            <div *ngIf="isLoading">
+               <app-loading-spinner></app-loading-spinner>
+            </div>
+            <div class="product-amount" *ngIf="!isLoading">
+               <button (click)="onAddToCart(cartItem.product._id)" class="btn-secondary">+</button>
                <span>{{ cartItem.amount }}</span>
-               <button class="btn-secondary">-</button>
+               <button (click)="onRemoveFromCart(cartItem.product._id)" class="btn-secondary">-</button>
             </div>
             <div class="product-price">
                <p class="price">{{ cartItem.product.price | currency}}</p>
@@ -25,4 +31,5 @@
          </div>
       </div>
    </div>
+   <h2 *ngIf="!isLoading && error">{{ error }}</h2>
 </li>

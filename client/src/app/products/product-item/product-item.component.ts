@@ -13,6 +13,7 @@ export class ProductItemComponent implements OnInit {
 
   @Input() product: Product;
   isLoading = false;
+  error: string = null;
 
   constructor(private cartService: CartService) { }
 
@@ -23,16 +24,11 @@ export class ProductItemComponent implements OnInit {
     this.isLoading = true;
     this.cartService.addToCart(productId).subscribe(res => {
       console.log(res);
-      this.cartService.addToCartError.next(null);
       this.isLoading = false;
     }, error => {
       console.log(error);
-      this.cartService.addToCartError.next(error.error.message);
       this.isLoading = false;
-      window.scroll({
-        top: 0,
-        behavior: 'smooth'
-      })
+      this.error = error.error.message;
     })
   }
 }

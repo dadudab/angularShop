@@ -1,7 +1,14 @@
 .container {
    width: 90%;
-   background-color: #ebefff;
+   max-width: 65rem;
+   /* background-color: #ebefff; */
+   background-color: #ffffff;
+   /* border: 1px solid black; */
    margin: 1rem auto;
+}
+
+.detail {
+   padding: 0.5rem;
 }
 
 .content {
@@ -13,6 +20,7 @@
    /* max-height: 300px; */
    height: 300px;
    object-fit: cover;
+   border-radius: 20px;
 }
 
 .product-name {
@@ -67,7 +75,7 @@ button {
       width: 50%;
    }
    .img-container img {
-      height: 700px;
+      height: 400px;
    }
 
    .detail {

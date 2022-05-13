@@ -2,7 +2,7 @@
 
 <h1 *ngIf="isLoading">Loading...</h1>
 
-<div *ngIf="!error && !isLoading" class="container">
+<div *ngIf="!error && !isLoading && cart" class="container">
    <div class="wrapper">
       <ul>
          <!-- <li *ngFor="let product of cart.products">
@@ -11,5 +11,7 @@
          </li> -->
          <app-cart-item *ngFor="let cartItem of cart.products" [cartItem]="cartItem"></app-cart-item>
       </ul>
+      <h1 *ngIf="cart.products.length === 0">Your cart is empty</h1>
+      <h3>{{ cart.totalAmount }}</h3>
    </div>
 </div>
