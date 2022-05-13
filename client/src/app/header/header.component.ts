@@ -1,3 +1,4 @@
+import { User } from './../shared/user.model';
 import { CartService } from './../cart/cart.service';
 import { AuthService } from './../auth/auth.service';
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
@@ -13,6 +14,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   isSidebarOpen = false;
   isAuth = false;
+  user: User;
   userSub: Subscription;
   cartSub: Subscription;
   cartTotalProducts: number;
@@ -23,10 +25,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     console.log(this.isAuth);
     this.userSub = this.authService.user.subscribe(user => {
       this.isAuth = !!user;
-      console.log(user);
+      this.user = user;
       if(this.isAuth) {
         this.cartSub = this.cartService.getCart().subscribe(cart => {
-          console.log(cart);
           this.cartService.cart.subscribe(cart => {
             this.cartTotalProducts = cart.totalProducts;
           })

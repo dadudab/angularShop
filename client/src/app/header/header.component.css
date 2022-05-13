@@ -71,6 +71,39 @@ img {
    display: none;
 }
 
+.profile-container {
+   /* background-color: red; */
+   /* height: 100%;
+   width: 100px; */
+   /* position: absolute; */
+   /* display: inline; */
+   display: flex;
+   align-items: center;
+   width: 130px;
+   justify-content: space-evenly;
+}
+
+.arrow {
+   height: 30px;
+   width: 30px;
+   background-color: black;
+}
+
+.avatar {
+   background-color: blue;
+   border-radius: 50%;
+   height: 40px;
+   width: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.profile-container > p, .avatar > p {
+   font-size: 22px;
+   /* display: inline; */
+}
+
 @media screen and (max-width: 1150px) {
 }
 

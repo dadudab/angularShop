@@ -2,7 +2,7 @@ import { CartService } from './../cart/cart.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { tap, take } from 'rxjs/operators';
 
 import jwt_decode from 'jwt-decode';
 import { BehaviorSubject } from 'rxjs';
@@ -21,7 +21,7 @@ export class AuthService {
   user = new BehaviorSubject<User>(null);
   tokenExpirationTimer: any;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private cartService: CartService) { }
   
   registerUser(userData: Object) {
     return this.http.post<IAuthResponse>(this.configUrl + '/users/register', userData)
