@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
@@ -28,5 +28,18 @@ export class ProductService {
         return throwError(error.error.message);
       }), 
     )
+  }
+
+  addNewProduct(product) {
+    return this.http.post<Product>(this.configUrl + '/products/new', product).pipe(
+      catchError(error => this.handleError(error))
+    )
+  }
+
+  handleError(error: HttpErrorResponse) {
+    if(!error.error.message) {
+      return throwError('Something went wrong.. Try again later');
+    }
+    return throwError(error.error.message);
   }
 }

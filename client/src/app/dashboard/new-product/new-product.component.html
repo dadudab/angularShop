@@ -1,0 +1,69 @@
+<div class="entire-page">
+   <div class="about-page">
+      <h2>Create product</h2>
+      <p>t is a long established fact that a reader will be distracted by 
+         the readable content of a page when looking at its layout. The 
+         point of using Lorem
+      </p>
+   </div>
+   <app-error-message *ngIf="!isLoading && error" [message]="error"></app-error-message>
+   <div class="container about-sales">
+      <h2>About sales</h2>
+      <p>
+         s simply dummy text of the printing and typeset
+         ting industry. Lorem Ipsum has been the industry
+         's standard dummy text ever since the 1500s, whe
+         n an unknown printer took a galley of type and sc
+         rambled it to make a type specimen book. It has s
+         urvived not only five centuries, but also the le
+         ap into electronic typesetting, remaining essenti
+      </p>
+   </div>
+   <div class="container add-product">
+      <form (ngSubmit)="onAddProduct(newProductForm)" #newProductForm="ngForm">
+         <div class="form-control">
+            <label for="product-name">Name</label>
+            <input type="text" id="product-name" name="productName"
+               class="basic-input" #name="ngModel" [(ngModel)]="productName" required>
+            <small *ngIf="name.touched && !name.valid">Name must not be empty</small>
+         </div>
+         <div class="form-control">
+            <label for="product-price">Price</label>
+            <input type="number" min="1" id="product-price" name="productPrice" 
+               class="basic-input" #price="ngModel" [(ngModel)]="productPrice" required>
+            <!-- <span class="dolar-sign">$</span> -->
+            <small *ngIf="price.touched && !price.valid">Price is not valid</small>
+         </div>
+         <div class="form-control">
+            <label for="category-select">Category</label>
+            <select name="category" id="category-select" required [(ngModel)]="productCategory">
+               <option *ngFor="let category of productCategories" [value]="category.value">{{ category.name }}</option>
+            </select>
+         </div>
+         <div class="form-control">
+            <label for="product-image">Image</label>
+            <input type="file" name="productImage" (change)="onSelectedFile($event)"
+               ngModel #file="ngModel" required>
+            <small *ngIf="file.touched && !file.valid">Product image is required</small>
+         </div>
+         <div class="form-control">
+            <label for="product-description">Description</label>
+            <textarea name="desc" id="product-description" rows="12" [(ngModel)]="productDescription" #desc="ngModel" required></textarea>
+            <small *ngIf="desc.touched && !desc.valid">Description is required</small>
+         </div>
+         <div *ngIf="isLoading">
+            <app-loading-spinner></app-loading-spinner>
+         </div>
+         <button type="submit" class="btn-primary-small" [disabled]="!newProductForm.valid">Submit</button>
+         <p *ngIf="isSuccess">Success mark :)</p>
+      </form>
+   </div>
+   <div class="container product-summary">
+      <h2>Product Summary</h2>
+      <div class="new-product-detail">
+         <h4 style="width:fit-content">Name: </h4>
+         <span>{{ productName }}</span>
+      </div>
+      <img *ngIf="productFileBase64" src={{productFileBase64}} alt="">
+   </div>
+</div>

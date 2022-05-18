@@ -21,6 +21,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { ErrorMessageComponent } from './shared/error-message/error-message/error-message.component';
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner/loading-spinner.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewProductComponent } from './dashboard/new-product/new-product.component';
 
 
 @NgModule({
@@ -40,6 +42,8 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     ErrorMessageComponent,
     CartItemComponent,
     LoadingSpinnerComponent,
+    DashboardComponent,
+    NewProductComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,8 @@ import { ProductsComponent } from './products/products.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductsResolver } from './products/products-resolver.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewProductComponent } from './dashboard/new-product/new-product.component';
 
 
 const routes: Routes = [
@@ -18,7 +20,10 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: 'dashboard', component: DashboardComponent, children: [
+    { path: 'new-product', component: NewProductComponent }
+  ]},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ]
 
 @NgModule({

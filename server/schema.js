@@ -14,7 +14,7 @@ module.exports.userSchema = Joi.object({
 module.exports.productSchema = Joi.object({
   name: Joi.string().min(1).required(),
   description: Joi.string().min(1).required(),
-  price: Joi.number().min(0.01).required(),
-  imageUrl: Joi.string().required(),
+  price: Joi.number().min(1).required(),
+  image: Joi.object().required(),
   categories: Joi.array().items(Joi.string().min(1)),
 }).required();

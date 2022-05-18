@@ -1,4 +1,5 @@
 const Product = require('../models/product');
+const { cloudinary } = require('../config/cloudinary');
 
 module.exports.getProducts = async (req, res) => {
   try {
@@ -29,15 +30,22 @@ module.exports.getProduct = async (req, res) => {
 
 module.exports.createProduct = async (req, res) => {
   const userId = req.user._id;
-  const { name, description, price, imageUrl, categories } = req.body;
+  const { name, description, price, image, categories } = req.body;
 
   try {
+    const cloudinaryRes = await cloudinary.uploader.upload(image.imageString);
+    console.log(cloudinaryRes);
+
     const newProduct = new Product({
       user: userId,
       name,
       description,
       price,
-      imageUrl,
+      image: {
+        imageUrl: cloudinaryRes.url,
+        imageId: cloudinaryRes.public_id,
+        imageString: null
+      },
       categories,
     });
 
@@ -48,8 +56,6 @@ module.exports.createProduct = async (req, res) => {
     return res.status(500).json({ message: 'Something went wrong' });
   }
 };
-
-// /user/34/products
 
 module.exports.getUserProducts = async (req, res) => {
   const { userId } = req.params;

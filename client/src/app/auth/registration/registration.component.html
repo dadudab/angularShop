@@ -5,13 +5,13 @@
       <h2>Registration</h2>
       <form (ngSubmit)="onRegisterUser(registerForm)" #registerForm="ngForm">
          <div class="wrapper">
-            <div class="form-control">
+            <div class="form-control first-name">
                <label for="firstName">First Name</label>
                <input type="text" id="firstName" name="firstName" class="basic-input"
                 required ngModel #firstName="ngModel">
                <small *ngIf="!firstName.valid && firstName.touched">First name must not be empty</small>
             </div>
-            <div class="form-control">
+            <div class="form-control last-name">
                <label for="lastName">Last Name</label>
                <input type="text" id="lastName" name="lastName" class="basic-input"
                required ngModel #lastName="ngModel">

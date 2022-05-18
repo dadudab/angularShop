@@ -2,7 +2,9 @@
    width: 90%;
    max-width: 26rem;
    margin: 3rem auto;
-   background-color: #EBEFFF;
+   background-color: #ffffff;
+   box-shadow: 0 0 0.2em gray;
+   border-radius: 5px;
 }
 
 .content {
@@ -33,6 +35,14 @@ button {
       display: flex;
       align-items: center;
       justify-content: space-between;
+   }
+
+   .first-name {
+      width: 45%;
+   }
+
+   .last-name {
+      width: 45%;
    }
 
    .address {
