@@ -1,9 +1,13 @@
 .container {
-   background-color: white;
+   background-color: #f7f7f7;
    padding: 1rem;
    margin-top: 1rem;
-   box-shadow: 0 0 0.5em black;
-   border-radius: 5px;
+   box-shadow: 0 0 0.3em #4d4d4d;
+   border-radius: 3px;
+}
+
+.secondary-text-color {
+   color: #4d4d4d;
 }
 
 .form-control {
@@ -15,9 +19,30 @@
    width: 100%;
 }
 
+.file-input {
+   background-color: red;
+}
+
 textarea {
    display: block;
    width: 100%;
+}
+
+select { 
+   background-color: transparent;
+   border-radius: 3px;
+   border: 1px solid #808080;
+   height: 30px;
+}
+
+textarea {
+   border-radius: 3px;
+   border: 1px solid #808080;
+}
+
+textarea:focus {
+   outline: none;
+   border: 2px solid #513ADE;
 }
 
 @media screen and (min-width: 1024px) {

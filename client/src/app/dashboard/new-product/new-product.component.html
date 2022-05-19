@@ -1,15 +1,15 @@
 <div class="entire-page">
    <div class="about-page">
       <h2>Create product</h2>
-      <p>t is a long established fact that a reader will be distracted by 
+      <p class="secondary-text-color">t is a long established fact that a reader will be distracted by 
          the readable content of a page when looking at its layout. The 
          point of using Lorem
       </p>
+      <app-error-message *ngIf="!isLoading && error" [message]="error"></app-error-message>
    </div>
-   <app-error-message *ngIf="!isLoading && error" [message]="error"></app-error-message>
    <div class="container about-sales">
       <h2>About sales</h2>
-      <p>
+      <p class="secondary-text-color">
          s simply dummy text of the printing and typeset
          ting industry. Lorem Ipsum has been the industry
          's standard dummy text ever since the 1500s, whe
@@ -20,7 +20,14 @@
       </p>
    </div>
    <div class="container add-product">
+      <h2>New Product</h2>
       <form (ngSubmit)="onAddProduct(newProductForm)" #newProductForm="ngForm">
+         <div class="form-control">
+            <label for="product-image">Image</label>
+            <input class="file-input" type="file" name="productImage" (change)="onSelectedFile($event)"
+               ngModel #file="ngModel" required>
+            <small *ngIf="file.touched && !file.valid">Product image is required</small>
+         </div>
          <div class="form-control">
             <label for="product-name">Name</label>
             <input type="text" id="product-name" name="productName"
@@ -39,12 +46,6 @@
             <select name="category" id="category-select" required [(ngModel)]="productCategory">
                <option *ngFor="let category of productCategories" [value]="category.value">{{ category.name }}</option>
             </select>
-         </div>
-         <div class="form-control">
-            <label for="product-image">Image</label>
-            <input type="file" name="productImage" (change)="onSelectedFile($event)"
-               ngModel #file="ngModel" required>
-            <small *ngIf="file.touched && !file.valid">Product image is required</small>
          </div>
          <div class="form-control">
             <label for="product-description">Description</label>

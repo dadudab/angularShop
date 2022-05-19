@@ -1,5 +1,6 @@
 .dashboard-container {
-   background-color: #f7f5f5;
+   /* background-color: #f7f5f5; */
+   background-color: #f1f1f1;
    min-height: 92vh;
    width: 100%;
 }
@@ -7,6 +8,7 @@
 .sidebar-container {
    border-top: 1px solid black;
    background-color: #e0e0e0;
+   /* background-color: #513ADE; */
 }
 
 ul {
@@ -14,11 +16,14 @@ ul {
    justify-content: center;
 }
 
-li {
-   padding: 1rem;
+a {
+   padding: 0.5rem 1rem;
+   display: flex;
+   color: black;
+   text-decoration-line: none;
 }
 
-li:hover {
+a:hover {
    background-color: white;
    cursor: pointer;
 }
@@ -29,24 +34,47 @@ li > a > img {
 }
 
 .content-container {
-   padding: 2rem;
-   /* height: 92vh; */
+   padding: 1rem;
 }
 
-@media screen and (min-width: 1500px){
+.link-name {
+   display: none;
+}
+
+.active-link {
+   background-color: #ffffff;
+}
+
+@media screen and (min-width: 1530px){
    .dashboard-container {
       display: flex;
       justify-content: space-between;
    }
    
    .sidebar-container {
-      width: 30%;
+      width: 15%;
       min-height: 92vh;
-      background-color: green;
+      /* background-color: green; */
+   }
+
+   .link-name {
+      display: flex;
+      align-items: center;
+      margin-left: 20px;
+   }
+
+   a {
+      display: flex;
+      justify-content: flex-start;
    }
 
    ul {
       flex-direction: column;
       padding: 1rem;
+   }
+
+   .content-container {
+      max-width: 85%;
+      padding: 2rem;
    }
 }
