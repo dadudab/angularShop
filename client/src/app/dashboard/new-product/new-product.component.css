@@ -19,8 +19,21 @@
    width: 100%;
 }
 
-.file-input {
-   background-color: red;
+input[type="file"] {
+   display: none;
+}
+
+.file-input-label {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 1.5rem 0;
+   align-content: center;
+   border: 1px solid gray;
+   border-radius: 3px;
+   cursor: pointer;
+   background-color: white;
 }
 
 textarea {
@@ -29,7 +42,7 @@ textarea {
 }
 
 select { 
-   background-color: transparent;
+   background-color: white;
    border-radius: 3px;
    border: 1px solid #808080;
    height: 30px;
@@ -45,6 +58,26 @@ textarea:focus {
    border: 2px solid #513ADE;
 }
 
+.actions {
+   margin-top: 10px;
+}
+
+.product-detail {
+   margin-top: 10px;
+}
+
+.product-detail > img {
+   width: 100%;
+   max-height: 200px;
+   object-fit: cover;
+   margin-top: 5px;
+   border-radius: 3px;
+}
+
+.selected-category::first-letter {
+   text-transform: uppercase;
+}
+
 @media screen and (min-width: 1024px) {
    .about-page {
       grid-area: description;
@@ -58,11 +91,12 @@ textarea:focus {
    .product-summary {
       grid-area: product-summary;
       margin-left: 20px;
+      max-height: 700px;
+      overflow-y: scroll;
    }
 
    .entire-page {
       width: 100%;
-      height: 100%;
       display: grid;
       grid-template-columns: 25% 25% 25% 25%;
       /* grid-template-rows: 50% 10% 10% 20%; */

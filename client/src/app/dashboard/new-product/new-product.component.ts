@@ -18,6 +18,7 @@ export class NewProductComponent implements OnInit {
   productCategory: string;
   productFile;
   productFileBase64;
+  uploadedImageName: string;
   isLoading = false;
   isSuccess = false;
   error: string = null;
@@ -31,6 +32,8 @@ export class NewProductComponent implements OnInit {
 
   onSelectedFile(event) {
     this.productFile = event.target.files[0];
+    this.uploadedImageName = this.productFile.name;
+    console.log(this.uploadedImageName);
     const reader = new FileReader();
     reader.onloadend = () => {
       this.productFileBase64 = reader.result;

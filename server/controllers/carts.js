@@ -160,7 +160,11 @@ module.exports.deleteProductFromCart = async (req, res) => {
       return item.product.toString() !== productId;
     });
 
+    const updatedTotalAmount = cart.totalAmount.toFixed(2) - foundProduct.price.toFixed(2);
+
     cart.products = updatedCartItems;
+    cart.totalAmount = updatedTotalAmount;
+    cart.totalProducts -= 1;
     await cart.save();
 
     const updatedCart = await Cart.findOne({ user: userId }).populate({
