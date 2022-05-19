@@ -23,6 +23,8 @@ import { CartItemComponent } from './cart/cart-item/cart-item.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner/loading-spinner.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewProductComponent } from './dashboard/new-product/new-product.component';
+import { ProfileComponent } from './dashboard/profile/profile.component';
+import { ProductsDashboardComponent } from './dashboard/products-dashboard/products-dashboard.component';
 
 
 @NgModule({
@@ -44,13 +46,15 @@ import { NewProductComponent } from './dashboard/new-product/new-product.compone
     LoadingSpinnerComponent,
     DashboardComponent,
     NewProductComponent,
+    ProfileComponent,
+    ProductsDashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule,
+    RouterModule
   ],
   providers: [
     {

@@ -1,0 +1,36 @@
+.entire-page {
+   /* background-color: green; */
+   height: 100%;
+}
+
+.container {
+   background-color: #f7f7f7;
+   padding: 1rem;
+   box-shadow: 0 0 0.3em #4d4d4d;
+   border-radius: 3px;
+}
+
+@media screen and (min-width: 1024px) {
+   #product-list {
+      grid-area: product-list;
+      margin-right: 20px;
+   }
+
+   #chart {
+      grid-area: chart;
+   }
+
+   .wrapper {
+      margin-top: 20px;
+      display: grid;
+      width: 100%;
+      max-height: 90%;
+      /* background-color: red; */
+      grid-template-columns: 25% 25% 25% 25%;
+      grid-template-areas:
+      "product-list product-list product-list chart"
+      "product-list product-list product-list chart"
+      "product-list product-list product-list chart"
+      "product-list product-list product-list chart";
+   }
+}

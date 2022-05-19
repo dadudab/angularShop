@@ -42,7 +42,8 @@ export class CartService {
 
   removeFromCart(productId: string) {
     return this.http.delete<ICartResponse>(`${this.configUrl}/cart/${productId}/delete`)
-      .pipe(tap(data => {
+      .pipe(
+        tap(data => {
         this.cart.next(data);
       }))
   } 

@@ -99,8 +99,6 @@ textarea:focus {
       width: 100%;
       display: grid;
       grid-template-columns: 25% 25% 25% 25%;
-      /* grid-template-rows: 50% 10% 10% 20%; */
-      /* gap: 1em; */
       grid-template-areas: 
       "description description description description"
       "sales sales sales product-summary"
