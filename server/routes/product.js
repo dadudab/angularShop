@@ -20,14 +20,14 @@ router.get('/products', getProducts);
 router.get('/products/:productId', getProduct);
 router.get('/users/:userId/products', getUserProducts);
 router.put(
-  '/users/:userId/products/:productId/update',
+  '/products/:productId/update',
   isAuth,
   isProductOwner,
   validateProduct,
   updateProduct
 );
 router.delete(
-  '/users/:userId/products/:productId/delete',
+  '/products/:productId/delete',
   isAuth,
   isProductOwner,
   deleteProduct

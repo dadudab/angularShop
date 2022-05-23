@@ -36,10 +36,16 @@ export class ProductService {
     )
   }
 
+  getUserProducts(userId: string) {
+    return this.http.get<Product[]>(`${this.configUrl}/users/${userId}/products`)
+      .pipe(catchError(error => this.handleError(error)));
+  }
+
   handleError(error: HttpErrorResponse) {
-    if(!error.error.message) {
-      return throwError('Something went wrong.. Try again later');
-    }
-    return throwError(error.error.message);
+    // if(!error.error.message) {
+    //   return throwError('Something went wrong.. Try again later');
+    // }
+    // return throwError(error.error.message);
+    return of(null);
   }
 }

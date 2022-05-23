@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewProductComponent } from './dashboard/new-product/new-product.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { ProductsDashboardComponent } from './dashboard/products-dashboard/products-dashboard.component';
+import { UserProductsResolver } from './dashboard/products-dashboard/user-products-resolver.service';
 
 
 const routes: Routes = [
@@ -25,7 +26,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, children: [
     { path: 'new-product', component: NewProductComponent },
     { path: 'profile', component: ProfileComponent },
-    { path: 'my-products', component: ProductsDashboardComponent}
+    { path: 'my-products', component: ProductsDashboardComponent, resolve: { userProducts: UserProductsResolver}}
   ]},
   { path: '', redirectTo: 'home', pathMatch: 'full' },  
 ]

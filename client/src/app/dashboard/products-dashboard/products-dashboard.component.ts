@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Product } from 'src/app/shared/product.model';
 
 @Component({
   selector: 'app-products-dashboard',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsDashboardComponent implements OnInit {
 
-  constructor() { }
+  userProducts: Product[];
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.userProducts = this.route.snapshot.data.userProducts;
+    console.log(this.userProducts);
   }
 
+  
 }
