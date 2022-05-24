@@ -127,32 +127,38 @@ module.exports.getUserProductsStats = async (req ,res) => {
   let gardenProducts = 0;
   let carsProducts = 0;
   let homeProducts = 0;
+  let electronicProducts = 0;
 
   try {
     const total = await Product.countDocuments({ user: userId });
-    // const gardenProducts = await Product.countDocuments({ user})
-    const totalP = await Product.find({ user: userId });
-    for(let p of totalP) {
-      if(p.categories[0] === 'garden') {
+    const totalProducts = await Product.find({ user: userId });
+
+    for(let product of totalProducts) {
+      if(product.categories[0] === 'garden') {
         gardenProducts += 1;
       }
-      else if(p.categories[0] === 'cars') {
+      else if(product.categories[0] === 'cars') {
         carsProducts += 1;
       }
-      else if(p.categories[0] === 'home') {
+      else if(product.categories[0] === 'home') {
         homeProducts += 1;
+      }
+      else if(product.categories[0] === 'electronic') {
+        electronicProducts += 1;
       }
     }
 
     console.log(gardenProducts + ' garden');
     console.log(carsProducts + ' cars');
     console.log(homeProducts + ' home');
+    console.log(electronicProducts + ' electronic');
 
     return res.status(200).json({
       totalProducts: total,
       gardenProducts,
       carsProducts,
-      homeProducts
+      homeProducts,
+      electronicProducts
     })
 
   } catch (error) {

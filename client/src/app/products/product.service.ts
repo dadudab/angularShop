@@ -41,6 +41,11 @@ export class ProductService {
       .pipe(catchError(error => this.handleError(error)));
   }
 
+  getCategoriesSats() {
+    return this.http.get<any>(`${this.configUrl}/products/categories/statistics`)
+      .pipe(catchError(error => this.handleError(error)));
+  }
+
   handleError(error: HttpErrorResponse) {
     // if(!error.error.message) {
     //   return throwError('Something went wrong.. Try again later');

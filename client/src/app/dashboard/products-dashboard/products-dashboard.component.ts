@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ChartOptions, ChartType } from 'chart.js';
+import { ChartColor, ChartOptions, ChartType } from 'chart.js';
 import { Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, SingleDataSet } from 'ng2-charts';
 import { Product } from 'src/app/shared/product.model';
 
@@ -12,29 +12,40 @@ import { Product } from 'src/app/shared/product.model';
 export class ProductsDashboardComponent implements OnInit {
 
   userProducts: Product[];
+  categoriesStats;
+  gardenProducts = 0;
+  homeProducts = 0;
+  carsProducts = 0;
+  electronicProducts = 0;
 
   public pieChartOptions: ChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
   };
-  public pieChartLabels: Label[] = ['Home products', 'Garden products', 'asdij qwjd '];
-  public pieChartData: SingleDataSet = [2, 6, 0];
+  public pieChartLabels: Label[] = ['Home products', 'Garden products', 'Cars products', 'Electronic products'];
+  public pieChartData: SingleDataSet;
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
   public pieChartColors: Array <any> = [{
-    backgroundColor: ['red', 'yellow']
+    backgroundColor: ['red', 'yellow', 'pink', 'green']
   }];
-
+  
   constructor(private route: ActivatedRoute) { 
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
   }
-
+  
   ngOnInit(): void {
     this.userProducts = this.route.snapshot.data.userProducts;
-    console.log(this.userProducts);
+    this.categoriesStats = this.route.snapshot.data.categoriesStats;
+    if(this.categoriesStats) {
+      this.pieChartData = [
+        this.categoriesStats.homeProducts,
+        this.categoriesStats.gardenProducts,
+        this.categoriesStats.carsProducts,
+        this.categoriesStats.electronicProducts
+      ];
+    }
   }
-
-  
 }
