@@ -7,6 +7,7 @@ const {
   getUserProducts,
   updateProduct,
   deleteProduct,
+  getUserProductsStats,
 } = require('../controllers/products');
 const {
   isAuth,
@@ -17,6 +18,7 @@ const {
 
 router.post('/products/new', isAuth, validateProduct, createProduct);
 router.get('/products', getProducts);
+router.get('/products/stats', isAuth, getUserProductsStats);
 router.get('/products/:productId', getProduct);
 router.get('/users/:userId/products', getUserProducts);
 router.put(

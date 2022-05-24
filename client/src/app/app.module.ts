@@ -25,6 +25,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewProductComponent } from './dashboard/new-product/new-product.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { ProductsDashboardComponent } from './dashboard/products-dashboard/products-dashboard.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ProductsDashboardComponent } from './dashboard/products-dashboard/produ
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ChartsModule
   ],
   providers: [
     {
