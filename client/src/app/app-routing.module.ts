@@ -15,6 +15,8 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
 import { ProductsDashboardComponent } from './dashboard/products-dashboard/products-dashboard.component';
 import { UserProductsResolver } from './dashboard/products-dashboard/user-products-resolver.service';
 import { CategoriesStatisticsResolver } from './dashboard/products-dashboard/categories-statistics-resolver.service';
+import { UpdateProductComponent } from './dashboard/products-dashboard/update-product/update-product.component';
+import { ProductResolver } from './products/product-detail/product-resolver.service';
 
 
 const routes: Routes = [
@@ -24,7 +26,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
-  { path: 'dashboard', component: DashboardComponent, children: [
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], children: [
     { path: 'new-product', component: NewProductComponent },
     { path: 'profile', component: ProfileComponent },
     { 
@@ -33,7 +35,14 @@ const routes: Routes = [
       resolve: { 
         userProducts: UserProductsResolver,
         categoriesStats: CategoriesStatisticsResolver
-      },
+      }
+    },
+    {
+      path: 'my-products/:productId/update',
+      component: UpdateProductComponent,
+      resolve: {
+        product: ProductResolver
+      }
     }
   ]},
   { path: '', redirectTo: 'home', pathMatch: 'full' },  

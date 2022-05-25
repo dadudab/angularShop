@@ -20,13 +20,14 @@ export class ProductService {
 
   getProductById(id: string) {
     return this.http.get<Product>(this.configUrl + '/products/' + id).pipe(
-      catchError(error => {
-        console.log('Handling error locally and rethrowing it...', error);
-        if(!error.error.message) {
-          return throwError('Something went wrong');
-        }
-        return throwError(error.error.message);
-      }), 
+      // catchError(error => {
+      //   console.log('Handling error locally and rethrowing it...', error);
+      //   if(!error.error.message) {
+      //     return throwError('Something went wrong');
+      //   }
+      //   return throwError(error.error.message);
+      // }), 
+      catchError(error => this.handleError(error))
     )
   }
 
@@ -44,6 +45,15 @@ export class ProductService {
   getCategoriesSats() {
     return this.http.get<any>(`${this.configUrl}/products/categories/statistics`)
       .pipe(catchError(error => this.handleError(error)));
+  }
+
+  updateProduct(product: any, productId: string) {
+    this.http.put<Product>(`${this.configUrl}/products/${productId}/update`, product)
+      .subscribe(res => {
+        console.log(res);
+      }, error => {
+        console.log(error);
+      })
   }
 
   handleError(error: HttpErrorResponse) {

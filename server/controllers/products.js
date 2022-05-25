@@ -71,8 +71,7 @@ module.exports.getUserProducts = async (req, res) => {
 
 module.exports.updateProduct = async (req, res) => {
   const { productId } = req.params;
-  //   console.log(productId);
-  const { name, description, imageUrl, price, categories } = req.body;
+  const { name, description, image, price, categories } = req.body;
 
   try {
     const previousProduct = await Product.findById(productId);
@@ -80,22 +79,69 @@ module.exports.updateProduct = async (req, res) => {
       return res.status(404).json({ message: 'Product not found' });
     }
 
-    const updatedProduct = {
-      // ...previousProduct,
-      name,
-      description,
-      imageUrl,
-      price,
-      categories,
-    };
-    const newProduct = await Product.findByIdAndUpdate(
-      productId,
-      updatedProduct,
-      { new: true }
-    );
 
-    await newProduct.save();
-    return res.status(200).json(newProduct);
+    if(!image.imageString) {
+      const product = {
+        _id: productId,
+        name,
+        price,
+        description,
+        categories,
+        image
+      }
+
+      const updatedProduct = await Product.findByIdAndUpdate(productId, product, { new: true });
+      await updatedProduct.save();
+      return res.status(200).json(updatedProduct);
+    }
+
+    if(image.imageString) {
+
+      // if user update image
+      await cloudinary.uploader.destroy(previousProduct.image.imageId);
+      // console.log(previousProduct.image.imageId);
+      
+      
+      const cloudinaryResponse = await cloudinary.uploader.upload(image.imageString);
+      console.log(cloudinaryResponse);
+      
+      const product = {
+        _id: productId,
+        name,
+        price,
+        description,
+        categories,
+        image: {
+          imageUrl: cloudinaryResponse.url,
+          imageString: null,
+          imageId: cloudinaryResponse.public_id
+        }
+      };
+      
+      const updatedProduct = await Product.findByIdAndUpdate(productId, product);
+      return res.status(200).json(updatedProduct);
+    }
+      
+      
+
+
+
+    // const updatedProduct = {
+    //   // ...previousProduct,
+    //   name,
+    //   description,
+    //   imageUrl,
+    //   price,
+    //   categories,
+    // };
+    // const newProduct = await Product.findByIdAndUpdate(
+    //   productId,
+    //   updatedProduct,
+    //   { new: true }
+    // );
+
+    // await newProduct.save();
+    // return res.status(200).json(newProduct);
 
   } catch (error) {
     console.log(error);

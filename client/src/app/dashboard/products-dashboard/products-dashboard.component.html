@@ -23,7 +23,10 @@
                      <td>{{ product.price | currency }}</td>
                      <td>{{ product._id }}</td>
                      <td>{{ product.createdDate | date }}</td>
-                     <td><button class="btn-primary-small">delete</button> <button class="btn-primary-small">asd</button></td>
+                     <td>
+                        <button [routerLink]="[product._id, 'update']" class="btn-primary-small">update</button>
+                        <button class="btn-primary-small">delete</button>
+                     </td>
                   </tr>
                </table>
 

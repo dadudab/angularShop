@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductService } from 'src/app/products/product.service';
 import { categories } from 'src/app/shared/categories';
@@ -21,7 +21,7 @@ export class NewProductComponent implements OnInit {
   uploadedImageName: string;
   isLoading = false;
   isSuccess = false;
-  error: string = null;
+  error: string = null; 
 
   constructor(private productService: ProductService) { }
 

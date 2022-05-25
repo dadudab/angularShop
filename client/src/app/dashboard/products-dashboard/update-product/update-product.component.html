@@ -1,0 +1,82 @@
+<div class="entire-page">
+   <div class="about-page">
+      <h2>Update product</h2>
+      <p class="secondary-text-color">t is a long established fact that a reader will be distracted by 
+         the readable content of a page when looking at its layout. The 
+         point of using Lorem
+      </p>
+      <!-- <app-error-message *ngIf="!isLoading && error" [message]="error"></app-error-message> -->
+   </div>
+   <div class="container add-product">
+      <h2>Update Product</h2>
+      <form (ngSubmit)="onUpdateProduct(updateProductForm)" #updateProductForm="ngForm">
+         <div class="form-control">
+            <label for="product-image">Image</label>
+            <p class="secondary-text-color">Allowed image formats: png, jpg</p>
+            <label class="file-input-label" for="product-image">
+               <span>Change image</span>
+               <span *ngIf="productFileName" class="secondary-text-color">{{ productFileName }}</span>
+               <input type="file" id="product-image" name="productImage" (change)="onSelectedFile($event)"
+                  ngModel #file="ngModel" accept="image/jpg, image/png">
+            </label>
+         </div>
+         <div class="form-control">
+            <label for="product-name">Name</label>
+            <input type="text" id="product-name" name="productName"
+               class="basic-input" #name="ngModel" [(ngModel)]="productName" required>
+            <small *ngIf="name.touched && !name.valid">Name must not be empty</small>
+         </div>
+         <div class="form-control">
+            <label for="product-price">Price</label>
+            <input type="number" min="1" id="product-price" name="productPrice" 
+               class="basic-input" #price="ngModel" [(ngModel)]="productPrice" required>
+            <!-- <span class="dolar-sign">$</span> -->
+            <small *ngIf="price.touched && !price.valid">Price is not valid</small>
+         </div>
+         <div class="form-control">
+            <label for="category-select">Category</label>
+            <select name="category" id="category-select" required [(ngModel)]="productCategory">
+               <option *ngFor="let category of availableCategories" [value]="category.value">{{ category.name }}</option>
+            </select>
+         </div>
+         <div class="form-control">
+            <label for="product-description">Description</label>
+            <textarea name="desc" id="product-description" rows="15" [(ngModel)]="productDescription" #desc="ngModel" required></textarea>
+            <small *ngIf="desc.touched && !desc.valid">Description is required</small>
+         </div>
+         <div *ngIf="isLoading">
+            <app-loading-spinner></app-loading-spinner>
+         </div>
+         <div class="actions">
+            <button type="submit" class="btn-primary-small" [disabled]="!updateProductForm.valid">Create</button>
+         </div>
+         <p *ngIf="isSuccess">Success mark :)</p>
+      </form>
+   </div>
+   <div class="container product-summary">
+      <h2>Product Summary</h2>
+      <div class="product-wrapper">
+         <div class="product-detail">
+            <h4>Image</h4>
+            <img *ngIf="productFileBase64 && !productImageUrl" src={{productFileBase64}} alt={{productName}}>
+            <img *ngIf="!productFileBase64 && productImageUrl" src={{productImageUrl}} alt={{productName}}>
+         </div>
+         <div class="product-detail">
+            <h4>Name</h4>
+            <p class="secondary-text-color">{{ productName }}</p>
+         </div>
+         <div class="product-detail">
+            <h4>Price</h4>
+            <p class="secondary-text-color">{{ productPrice | currency }}</p>
+         </div>
+         <div class="product-detail">
+            <h4>Category</h4>
+            <p class="secondary-text-color selected-category">{{ productCategory }}</p>
+         </div>
+         <div class="product-detail">
+            <h4>Description</h4>
+            <p class="secondary-text-color">{{ productDescription }}</p>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,116 @@
+.container {
+   background-color: #f7f7f7;
+   padding: 1rem;
+   margin-top: 1rem;
+   box-shadow: 0 0 0.3em #4d4d4d;
+   border-radius: 3px;
+}
+
+.secondary-text-color {
+   color: #4d4d4d;
+}
+
+.form-control {
+   margin-top: 10px;
+}
+
+.form-control > input, select {
+   display: block;
+   width: 100%;
+}
+
+input[type="file"] {
+   display: none;
+}
+
+.file-input-label {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 1.5rem 0;
+   align-content: center;
+   border: 1px solid gray;
+   border-radius: 3px;
+   cursor: pointer;
+   background-color: white;
+}
+
+textarea {
+   display: block;
+   width: 100%;
+}
+
+select { 
+   background-color: white;
+   border-radius: 3px;
+   border: 1px solid #808080;
+   height: 30px;
+}
+
+textarea {
+   border-radius: 3px;
+   border: 1px solid #808080;
+}
+
+textarea:focus {
+   outline: none;
+   border: 2px solid #513ADE;
+}
+
+.actions {
+   margin-top: 10px;
+}
+
+.product-detail {
+   margin-top: 10px;
+}
+
+.product-detail > img {
+   width: 100%;
+   max-height: 200px;
+   object-fit: cover;
+   margin-top: 5px;
+   border-radius: 3px;
+}
+
+.selected-category::first-letter {
+   text-transform: uppercase;
+}
+
+/* .price {
+   position: relative;
+}
+
+.dolar-sign {
+   position: absolute;
+   right: 0;
+} */
+
+@media screen and (min-width: 1024px) {
+   .about-page {
+      grid-area: description;
+   }
+   .add-product {
+      grid-area: new-product;
+      margin-top: 1rem;
+   }
+   .product-summary {
+      grid-area: product-summary;
+      margin-left: 20px;
+      height: 700px;
+      overflow-y: scroll;
+   }
+
+   .entire-page {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 25% 25% 25% 25%;
+      grid-template-areas: 
+      "description description description description"
+      "new-product new-product new-product product-summary"
+      "new-product new-product new-product product-summary"
+      "new-product new-product new-product product-summary";
+   }
+
+}

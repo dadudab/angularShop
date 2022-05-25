@@ -1,13 +1,13 @@
 .dashboard-container {
    /* background-color: #f7f5f5; */
-   background-color: #f1f1f1;
+   background-color: #ffffff;
    min-height: 92vh;
    width: 100%;
 }
 
 .sidebar-container {
    border-top: 1px solid black;
-   background-color: #e0e0e0;
+   background-color: #E8E8E8;
    /* background-color: #513ADE; */
 }
 

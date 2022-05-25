@@ -26,6 +26,7 @@ import { NewProductComponent } from './dashboard/new-product/new-product.compone
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { ProductsDashboardComponent } from './dashboard/products-dashboard/products-dashboard.component';
 import { ChartsModule } from 'ng2-charts';
+import { UpdateProductComponent } from './dashboard/products-dashboard/update-product/update-product.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { ChartsModule } from 'ng2-charts';
     NewProductComponent,
     ProfileComponent,
     ProductsDashboardComponent,
+    UpdateProductComponent,
   ],
   imports: [
     BrowserModule,

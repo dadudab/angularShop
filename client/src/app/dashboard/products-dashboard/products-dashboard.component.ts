@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChartColor, ChartOptions, ChartType } from 'chart.js';
 import { Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, SingleDataSet } from 'ng2-charts';
 import { Product } from 'src/app/shared/product.model';
@@ -31,7 +31,7 @@ export class ProductsDashboardComponent implements OnInit {
     backgroundColor: ['red', 'yellow', 'pink', 'green']
   }];
   
-  constructor(private route: ActivatedRoute) { 
+  constructor(private route: ActivatedRoute, private router: Router) { 
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
   }
