@@ -1,7 +1,5 @@
-.container {
-   /* padding: 1rem; */
+/* .container {
    width: 90%;
-   /* width: auto; */
    margin: 0 auto;
    background-color: #EBEFFF;
 }
@@ -22,23 +20,23 @@ input {
 
 label {
    font-size: 18px;
+} */
+
+.container {
+   width: 90%;
+   margin: 0 auto;
+   background-color: #ffffff;
+   box-shadow: 0 0 0.2em gray;
+   border-radius: 3px;
 }
 
-/* @media screen and (min-width: 1000px) {
+ul {
+   padding: 1rem;
+}
+
+@media screen and (min-width: 1024px) {
    .container {
-      width: 100%;
       margin: 0;
+      width: 100%;
    }
-} */
-
-
-
-/* 
-input {
-   height: 50px;
-   width: 50px;
 }
-
-label {
-   font-size: 50px;
-} */

@@ -1,4 +1,4 @@
-.container {
+/* .container {
    margin-top: 3rem;
 }
 
@@ -16,7 +16,6 @@
    }
 
    .container {
-      /* margin-top: 3rem; */
       display: grid;
       grid-template-columns: 25% 25% 25% 25%;
       grid-template-rows: auto;
@@ -26,4 +25,23 @@
       ". main main .";
    }
 
+} */
+
+.container {
+   margin: 3rem auto;
+   width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+
+   .wrapper {
+      width: fit-content;
+      margin-right: 20px;
+   }
+
+   .container {
+      width: 90%;
+      display: flex;
+      justify-content: center;
+   }
 }

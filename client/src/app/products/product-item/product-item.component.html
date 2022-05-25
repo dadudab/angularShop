@@ -1,4 +1,4 @@
-<li>
+<!-- <li>
    <img src="https://www.ubuy.com.pl/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvODFXeDdodzl2d0wuX0FDX1NMMTUwMF8uanBn.jpg" alt="">
    <div class="content">
       <div class="product-info">
@@ -19,5 +19,14 @@
          </div>
          <a href="#">{{ product.user.username }}</a>
       </div>
+   </div>
+</li> -->
+
+<li>
+   <img src={{product.image.imageUrl}} alt={{product.name}}>
+   <div class="content">
+      <h3>{{ productName }}</h3>
+      <p class="font-color-secondary">{{ product.user.username }}</p>
+      <h2>$10</h2>
    </div>
 </li>

@@ -1,9 +1,9 @@
 .container {
    width: 90%;
-   margin: 1rem auto;
-   background-color: #EBEFFF;
+   margin: 0 auto;
+   background-color: transparent;
 }
-
+/* 
 .content {
    padding: 1rem;
 }
@@ -12,5 +12,33 @@
    .container {
       width: 100%;
       margin: 0;
+   }
+} */
+
+@media screen and (min-width: 768px) {
+   ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      gap: 10px;
+   }
+}
+
+@media screen and (min-width: 1024px) {
+   .container {
+      margin: 0;
+      width: 100%;
+   }
+}
+
+@media screen and (min-width: 1200px){
+   ul {
+      grid-template-columns: 1fr 1fr 1fr;
+   }
+}
+
+@media screen and (min-width: 1600px){
+   ul {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
    }
 }
