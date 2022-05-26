@@ -8,7 +8,7 @@
       <app-error-message *ngIf="!isLoading && error" [message]="error"></app-error-message>
    </div>
    <div class="container about-sales">
-      <h2>About sales</h2>
+      <h3>About sales</h3>
       <p class="secondary-text-color">
          s simply dummy text of the printing and typeset
          ting industry. Lorem Ipsum has been the industry
@@ -20,7 +20,7 @@
       </p>
    </div>
    <div class="container add-product">
-      <h2>New Product</h2>
+      <h3>New Product</h3>
       <form (ngSubmit)="onAddProduct(newProductForm)" #newProductForm="ngForm">
          <!-- <div class="form-control">
             <label for="product-image">Image</label>
@@ -68,13 +68,15 @@
             <app-loading-spinner></app-loading-spinner>
          </div>
          <div class="actions">
-            <button type="submit" class="btn-primary-small" [disabled]="!newProductForm.valid">Create</button>
+            <button *ngIf="!isLoading" type="submit" class="btn-primary-small" [disabled]="!newProductForm.valid">Create</button>
+            <span *ngIf="isSuccess">
+               <img class="success-mark" src="../../../assets/success_mark.png" alt="success">
+            </span>
          </div>
-         <p *ngIf="isSuccess">Success mark :)</p>
       </form>
    </div>
    <div class="container product-summary">
-      <h2>Product Summary</h2>
+      <h3>Product Summary</h3>
       <div class="product-wrapper">
          <div class="product-detail">
             <h4>Image</h4>

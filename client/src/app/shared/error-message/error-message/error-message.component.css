@@ -1,7 +1,10 @@
 .container {
    width: 100%;
    margin: 1rem auto;
-   background-color: red;
+   background-color: #ff4141;
+   /* background-color: red; */
+   border-radius: 3px;
+   /* color: white; */
 }
 
 .wrapper {

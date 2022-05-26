@@ -21,10 +21,11 @@ a {
    display: flex;
    color: black;
    text-decoration-line: none;
+   border-radius: 3px;
 }
 
 a:hover {
-   background-color: white;
+   background-color: #F4F4F2;
    cursor: pointer;
 }
 
@@ -42,7 +43,7 @@ li > a > img {
 }
 
 .active-link {
-   background-color: #ffffff;
+   background-color: #F4F4F2;
 }
 
 @media screen and (min-width: 1530px){

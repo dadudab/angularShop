@@ -6,6 +6,7 @@
          point of using Lorem
       </p>
       <!-- <app-error-message *ngIf="!isLoading && error" [message]="error"></app-error-message> -->
+      <app-error-message *ngIf="error" [message]="error"></app-error-message>
    </div>
    <div class="container add-product">
       <h2>Update Product</h2>
@@ -44,13 +45,13 @@
             <textarea name="desc" id="product-description" rows="15" [(ngModel)]="productDescription" #desc="ngModel" required></textarea>
             <small *ngIf="desc.touched && !desc.valid">Description is required</small>
          </div>
-         <div *ngIf="isLoading">
-            <app-loading-spinner></app-loading-spinner>
-         </div>
          <div class="actions">
-            <button type="submit" class="btn-primary-small" [disabled]="!updateProductForm.valid">Create</button>
+            <button *ngIf="!isLoading" type="submit" class="btn-primary-small" [disabled]="!updateProductForm.valid">Create</button>
+            <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+            <span *ngIf="isSuccess">
+               <img class="success-mark" src="../../../../assets/success_mark.png" alt="">
+            </span>
          </div>
-         <p *ngIf="isSuccess">Success mark :)</p>
       </form>
    </div>
    <div class="container product-summary">

@@ -32,9 +32,13 @@ export class ProductService {
   }
 
   addNewProduct(product) {
-    return this.http.post<Product>(this.configUrl + '/products/new', product).pipe(
-      catchError(error => this.handleError(error))
-    )
+    return this.http.post<Product>(this.configUrl + '/products/new', product)
+      .pipe(catchError(error => {
+        if(!error.error.message) {
+          return throwError('Something went wrong');
+        }
+        return throwError(error.error.message);
+      }))
   }
 
   getUserProducts(userId: string) {
@@ -48,12 +52,8 @@ export class ProductService {
   }
 
   updateProduct(product: any, productId: string) {
-    this.http.put<Product>(`${this.configUrl}/products/${productId}/update`, product)
-      .subscribe(res => {
-        console.log(res);
-      }, error => {
-        console.log(error);
-      })
+    return this.http.put<Product>(`${this.configUrl}/products/${productId}/update`, product)
+      .pipe(catchError(error => this.handleErrorMessage(error)));
   }
 
   handleError(error: HttpErrorResponse) {
@@ -62,5 +62,12 @@ export class ProductService {
     // }
     // return throwError(error.error.message);
     return of(null);
+  }
+
+  handleErrorMessage(error: HttpErrorResponse) {
+    if(!error.error.message) {
+      return throwError('Something went wrong');
+    }
+    return throwError(error.error.message);
   }
 }

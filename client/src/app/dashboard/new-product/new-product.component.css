@@ -60,6 +60,8 @@ textarea:focus {
 
 .actions {
    margin-top: 10px;
+   display: flex;
+   align-items: center;
 }
 
 .product-detail {
@@ -76,6 +78,12 @@ textarea:focus {
 
 .selected-category::first-letter {
    text-transform: uppercase;
+}
+
+.success-mark {
+   width: 30px;
+   height: 30px;
+   margin-left: 5px;
 }
 
 @media screen and (min-width: 1024px) {

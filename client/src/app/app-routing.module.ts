@@ -43,6 +43,9 @@ const routes: Routes = [
       resolve: {
         product: ProductResolver
       }
+    },
+    {
+      path: '', redirectTo: 'profile', pathMatch: 'full'
     }
   ]},
   { path: '', redirectTo: 'home', pathMatch: 'full' },  

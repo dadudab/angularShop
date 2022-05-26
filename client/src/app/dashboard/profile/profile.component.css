@@ -5,3 +5,96 @@
    box-shadow: 0 0 0.3em #4d4d4d;
    border-radius: 3px;
 }
+
+.avatar-container {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.avatar-container > p {
+   margin-top: 0.7rem;
+   font-size: 20px;
+} 
+
+.avatar {
+   background-color: #513ADE;
+   height: 100px;
+   width: 100px;
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   box-shadow: 0 0 0.3em #4d4d4d;
+}
+
+.avatar > span {
+   font-size: 30px;
+   color: white;
+}
+
+.user-detail-container {
+   margin-top: 2rem;
+}
+
+.user-detail {
+   margin-top: 1rem;
+}
+
+.social-media-container {
+   margin-top: 2rem;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+}
+
+.icon {
+   width: 50px;
+   height: 50px;
+   cursor: pointer;
+}
+
+.chart-container {
+   /* height: 300px; */
+}
+
+#user-info {
+   grid-area: user-info;
+}
+#services-info {
+   grid-area: services-info;
+}
+#first-chart {
+   grid-area: first-chart;
+}
+#second-chart {
+   grid-area: second-chart;
+}
+#third-chart {
+   grid-area: third-chart;
+}
+
+@media screen and (min-width: 1024px) {
+
+   .container {
+      margin: 0;
+   }
+
+   .content-wrapper {
+      margin-top: 1rem;
+      display: grid;
+      /* gap: 10px; */
+      grid-template-columns: 25% 25% 25% 25%;
+      /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+      grid-template-rows: 20% 20% 20% 20% 20%;
+      grid-template-areas: 
+      "user-info services-info services-info services-info"
+      "user-info services-info services-info services-info"
+      "user-info first-chart second-chart third-chart"
+      "user-info first-chart second-chart third-chart"
+      "user-info first-chart second-chart third-chart";
+   }
+}

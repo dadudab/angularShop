@@ -36,9 +36,9 @@ export class ProductItemComponent implements OnInit {
   }
 
   cutProductName(name: string) {
-    if(name.length > 28) {
+    if(name.length > 20) {
       console.log('too long name');
-      this.productName = name.slice(0, 28) + '...';
+      this.productName = name.slice(0, 20) + '...';
     }
     else {
       console.log('ok name');

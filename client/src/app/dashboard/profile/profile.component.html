@@ -1,9 +1,115 @@
 <div class="wrapper">
-   <h1>Your profile</h1>
-   <div class="container">
-      <h2>asd</h2>
+   <h2>Your profile</h2>
+
+   <div class="content-wrapper">
+
+      <div id="user-info" class="container">
+         <div class="avatar-container">
+            <div class="avatar">
+               <span>S</span>
+            </div>
+            <p>username</p>
+         </div>
+         <div class="user-detail-container">
+            <div class="user-detail">
+               <h4>ID</h4>
+               <p class="font-color-secondary">some name</p>
+            </div>
+            <div class="user-detail">
+               <h4>First Name</h4>
+               <p class="font-color-secondary">some name</p>
+            </div>
+            <div class="user-detail">
+               <h4>Last Name</h4>
+               <p class="font-color-secondary">some name</p>
+            </div>
+            <div class="user-detail">
+               <h4>Email</h4>
+               <p class="font-color-secondary">some name</p>
+            </div>
+            <div class="user-detail">
+               <h4>City</h4>
+               <p class="font-color-secondary">some name</p>
+            </div>
+            <div class="user-detail">
+               <h4>Address</h4>
+               <p class="font-color-secondary">some name</p>
+            </div>
+            <div class="user-detail">
+               <h4>Postal Code</h4>
+               <p class="font-color-secondary">some name</p>
+            </div>
+         </div>
+         <div class="social-media-container">
+            <div class="social-media-icon">
+               <img class="icon" src="../../../assets/icons8-facebook-96.png" alt="facebook">
+            </div>
+            <div class="social-media-icon">
+               <img class="icon" src="../../../assets/icons8-instagram-96.png" alt="instagram">
+            </div>
+            <div class="social-media-icon">
+               <img class="icon" src="../../../assets/icons8-twitter-96.png" alt="twitter">
+            </div>
+            <div class="social-media-icon">
+               <img class="icon" src="../../../assets/icons8-whatsapp-96.png" alt="whatsup">
+            </div>
+         </div>
+      </div>
+
+      <div id="services-info" class="container">
+         <h3>About services</h3>
+         <p class="font-color-secondary">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type 
+            specimen book. It has survived not only five centuries, but also the leap into 
+            electronic typesetting, remaining essentially unchanged. It was popularised in 
+            the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+            and more recently with desktop publishing software like Aldus PageMaker including 
+            versions of Lorem Ipsum. Why do we use it?
+         </p>
+      </div>
+
+      <div id="first-chart" class="container">
+            <div class="chart-container">
+               <canvas baseChart
+                  [data]="pieChartData" 
+                  [labels]="pieChartLabels" 
+                  [chartType]="pieChartType"
+                  [options]="pieChartOptions"
+                  [plugins]="pieChartPlugins"
+                  [legend]="pieChartLegend"
+                  [colors]="pieChartColors">
+               </canvas>
+            </div>
+      </div>
+
+      <div id="second-chart" class="container">
+            <div class="chart-container">
+               <canvas baseChart
+                  [data]="pieChartData" 
+                  [labels]="pieChartLabels" 
+                  [chartType]="pieChartType"
+                  [options]="pieChartOptions"
+                  [plugins]="pieChartPlugins"
+                  [legend]="pieChartLegend"
+                  [colors]="pieChartColors">
+               </canvas>
+            </div>
+      </div>
+
+      <div id="third-chart" class="container">
+         <div class="chart-container">
+            <canvas baseChart
+               [data]="pieChartData" 
+               [labels]="pieChartLabels" 
+               [chartType]="pieChartType"
+               [options]="pieChartOptions"
+               [plugins]="pieChartPlugins"
+               [legend]="pieChartLegend"
+               [colors]="pieChartColors">
+            </canvas>
+         </div>
    </div>
-   <div class="container">
-      
    </div>
 </div>

@@ -23,8 +23,8 @@ export class UpdateProductComponent implements OnInit {
   productFileName: string;
   productImageUrl: string;
   isLoading = false;
-  isSuccess = false;
   error: string = null;
+  isSuccess;
 
   constructor(
     private route: ActivatedRoute, 
@@ -42,8 +42,6 @@ export class UpdateProductComponent implements OnInit {
     this.productCategory = this.product.categories[0];
     this.availableCategories = categories;
     this.productImageUrl = this.product.image.imageUrl;
-
-    console.log(this.router.url);
   }
 
   onSelectedFile(event) {
@@ -84,7 +82,24 @@ export class UpdateProductComponent implements OnInit {
       image
     }
 
-    this.productService.updateProduct(updatedProduct, this.product._id);
+    this.isLoading = true;
+    this.error = null;
+    this.isSuccess = false;
+
+    this.productService.updateProduct(updatedProduct, this.product._id)
+      .subscribe(response => {
+        this.isLoading = false;
+        this.isSuccess = true;
+        this.router.navigate(['/dashboard/my-products']);
+      }, error => {
+        console.log(error);
+        this.error = error;
+        this.isLoading = false;
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      })
   }
 
 }

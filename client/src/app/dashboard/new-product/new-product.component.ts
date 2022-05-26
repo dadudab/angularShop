@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProductService } from 'src/app/products/product.service';
 import { categories } from 'src/app/shared/categories';
 import { Product } from 'src/app/shared/product.model';
@@ -23,7 +24,10 @@ export class NewProductComponent implements OnInit {
   isSuccess = false;
   error: string = null; 
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService, 
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.productCategories = categories;
@@ -62,13 +66,21 @@ export class NewProductComponent implements OnInit {
     this.isLoading = true;
     this.error = null;
     this.isSuccess = false;
+
     this.productService.addNewProduct(product).subscribe(response => {
       console.log(response);
       this.isLoading = false;
       this.isSuccess = true;
+      this.router.navigate(['/dashboard/my-products']);
     }, error => {
+      console.log(error);
       this.error = error;
       this.isLoading = false;
+      this.isSuccess = false;
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     })
   }
 
