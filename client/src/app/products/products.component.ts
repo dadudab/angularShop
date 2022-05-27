@@ -8,10 +8,15 @@ import { Component, OnInit, OnChanges, SimpleChanges, Input, DoCheck, OnDestroy,
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-
+  
+  @Input() selectedCategories: string[];
 
   constructor() { }
-
+  
   ngOnInit(): void {
+  }
+
+  receiveCategories(event) {
+    this.selectedCategories = event;
   }
 }

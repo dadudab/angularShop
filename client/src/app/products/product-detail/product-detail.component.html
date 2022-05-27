@@ -1,44 +1,53 @@
-<h1 *ngIf="isLoading">Loading...</h1>
-<h1 *ngIf="error && !isLoading">{{ error }}</h1>
-<!-- <h3 *ngIf="error && !product">No product with id {{ productId }}</h3> -->
-<!-- <div *ngIf="product" class="product-detail">
-   <p>{{ product.name }} </p>
-   <h3>{{ product.user }}</h3>
-</div> -->
+<!-- <h1 *ngIf="isLoading">Loading...</h1>
+<h1 *ngIf="error && !isLoading">{{ error }}</h1> -->
 
-<!-- <h1 *ngIf="!product && !isLoading">No product found</h1> -->
-
-<h3 *ngIf="!product">No product found</h3>
-<div *ngIf="product" class="container">
-   <div class="content">
-      <div class="img-container">
-         <img src={{product.imageUrl}} alt={{product.name}}>
+<div class="container">
+   <!-- <div class="wrapper"> -->
+      <div *ngIf="!product" class="wrapper">
+         <h3>No product found</h3>
       </div>
-      <div class="detail">
-         
-         <div>
-            <p class="product-name">{{ product.name }}</p>
-            <p class="price">{{ product.price | currency }}</p>   
-            <p class="desc">{{ product.description }}</p>
+
+      <div *ngIf="product" class="wrapper">
+
+         <div class="img-container">
+            <img src={{product.image.imageUrl}} alt={{product.name}}>
          </div>
-
-         <div>
-
-            <div class="seller-detail">
-               <div class="seller-container">
-                  <img src="../../../assets/user.png" alt="profile" class="icon">
-                  <a href="#">{{ product.user.username }}</a>
+         <div class="detail">
+            
+            <div>
+               <h2 class="product-name">{{ product.name }}</h2>
+               <h3 class="price">{{ product.price | currency }}</h3>   
+               <p class="desc">{{ product.description }}</p>
+            </div>
+   
+            <div>
+   
+               <div class="seller-detail">
+                  <div class="seller-container">
+                     <img src="../../../assets/user.png" alt="profile" class="icon">
+                     <a href="#">{{ product.user.username }}</a>
+                  </div>
+                  <div class="seller-container">
+                     <img src="../../../assets/location.png" alt="location" class="icon">
+                     <span>{{ product.user.city }}</span>
+                  </div>
                </div>
-               <div class="seller-container">
-                  <img src="../../../assets/location.png" alt="location" class="icon">
-                  <span>{{ product.user.city }}</span>
+               <div class="actions">
+                  <button class="btn-primary-small">Add to cart</button>
+                  <button class="btn-secondary-small" (click)="onBackToProducts()">Back to products</button>
                </div>
             </div>
-            <div class="actions">
-               <button class="btn-primary-small">Add to cart</button>
-               <button class="btn-secondary" (click)="onBackToProducts()">Back to products</button>
-            </div>
          </div>
       </div>
-   </div>
+
+
+
+
+
+
+
+
+
+
+   <!-- </div> -->
 </div>

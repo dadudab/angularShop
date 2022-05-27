@@ -1,7 +1,14 @@
 <div class="container">
    <!-- <div class="content"> -->
       <ul>
-         <app-product-item *ngFor="let product of products" [product]="product"></app-product-item>
+         <app-product-item *ngFor="let product of products | categoryFilter: selectedCategories" [product]="product"></app-product-item>
+         <li *ngIf="products.length === 0">
+            <h3>No products found</h3>
+         </li>
+         <li *ngIf="!(products | categoryFilter: selectedCategories)?.length">
+            <h3>Products not found</h3>
+         </li>
       </ul>
+      
    <!-- </div> -->
 </div>

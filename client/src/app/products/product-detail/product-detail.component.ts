@@ -10,10 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailComponent implements OnInit {
 
-  productId: string;
+  // productId: string;
   product: Product;
-  isLoading = false;
-  error: string = null;
+  // isLoading = false;
+  // error: string = null;
 
   constructor(
     private route: ActivatedRoute, 
@@ -22,10 +22,12 @@ export class ProductDetailComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.isLoading = true;
-    this.error = null;
-    this.productId = this.route.snapshot.paramMap.get('productId');
-    this.getProductById(this.productId);
+    // this.isLoading = true;
+    // this.error = null;
+    // this.productId = this.route.snapshot.paramMap.get('productId');
+    // this.getProductById(this.productId);
+    this.product = this.route.snapshot.data.product;
+    console.log(this.product);
   }
 
   // getProductById(id) {
@@ -41,17 +43,17 @@ export class ProductDetailComponent implements OnInit {
   //   })
   // }
 
-  getProductById(id) {
-    this.productService.getProductById(id).subscribe(response => {
-      console.log('HTTP response ', response);
-      this.product = response;
-      this.isLoading = false;
-    }, error => {
-      console.log('HTTP error ', error);
-      this.error = error;
-      this.isLoading = false;
-    })
-  }
+  // getProductById(id) {
+  //   this.productService.getProductById(id).subscribe(response => {
+  //     console.log('HTTP response ', response);
+  //     this.product = response;
+  //     this.isLoading = false;
+  //   }, error => {
+  //     console.log('HTTP error ', error);
+  //     this.error = error;
+  //     this.isLoading = false;
+  //   })
+  // }
 
   onBackToProducts() {
     this.router.navigate(['/products']);

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { categories } from 'src/app/shared/categories';
 @Component({
   selector: 'app-product-filter',
   templateUrl: './product-filter.component.html',
@@ -7,19 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductFilterComponent implements OnInit {
 
-  filteringOptions = [
-    { value: 'rtv', name: 'Rtv'},
-    { value: 'garden', name: 'Garden' },
-    { value: 'pc', name: 'pc' },
-    { value: 'garden', name: 'Garden' },
-    { value: 'garden', name: 'Garden' },
-    { value: 'garden', name: 'Garden' },
-    
-  ]
+  @Output() selectedCategoriesEvent = new EventEmitter<string[]>();
+  categories: object[];
+  selectedCategories: string[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.categories = categories;
   }
 
+  onChangeFilter(value: string) {
+    const existingIndex = this.selectedCategories.findIndex(option => option === value);
+
+    if(existingIndex === -1) {
+      this.selectedCategories.push(value);
+    }
+    else {
+      // this.selectedOptions.slice(existingIndex, 1);
+      // this.selectedOptions.filter(option => option !== value);
+      const updatedArray = this.selectedCategories.filter(option => option !== value);
+      this.selectedCategories = updatedArray;
+    }
+    // console.log(this.selectedCategories);
+    this.selectedCategoriesEvent.emit(this.selectedCategories);
+  }
 }

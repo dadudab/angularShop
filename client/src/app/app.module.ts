@@ -27,6 +27,7 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
 import { ProductsDashboardComponent } from './dashboard/products-dashboard/products-dashboard.component';
 import { ChartsModule } from 'ng2-charts';
 import { UpdateProductComponent } from './dashboard/products-dashboard/update-product/update-product.component';
+import { CategoryFilterPipe } from './products/product-filter/category-filter.pipe';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { UpdateProductComponent } from './dashboard/products-dashboard/update-pr
     ProfileComponent,
     ProductsDashboardComponent,
     UpdateProductComponent,
+    CategoryFilterPipe,
   ],
   imports: [
     BrowserModule,

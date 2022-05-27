@@ -30,8 +30,8 @@
                      <td class="font-color-secondary">{{ product._id }}</td>
                      <td class="font-color-secondary">{{ product.createdDate | date }}</td>
                      <td>
-                        <div class="actions">
-                           <div *ngIf="!isLoading">
+                        <div>
+                           <div class="actions" *ngIf="!isLoading">
                               <button 
                                  [routerLink]="[product._id, 'update']" 
                                  class="btn-primary-small">

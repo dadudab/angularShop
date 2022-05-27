@@ -22,7 +22,7 @@ import { ProductResolver } from './products/product-detail/product-resolver.serv
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'products', component: ProductsComponent, resolve: { products: ProductsResolver} },
-  { path: 'products/:productId', component: ProductDetailComponent },
+  { path: 'products/:productId', component: ProductDetailComponent, resolve: { product: ProductResolver} },
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },

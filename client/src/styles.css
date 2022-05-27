@@ -79,15 +79,35 @@ ul {
    background-color: #867cc5;
 }
 
-.btn-secondary {
-   /* box-sizing: border-box; */
+/* .btn-secondary {
    background-color: transparent;
    border-radius: 10px;
    padding: 7px 17px;
-   /* border: 1px solid #3f319c; */
+   border: 1px solid black;
    font-size: 18px;
    border: none;
    color: #3f319c;
+   cursor: pointer;
+} */
+
+.btn-secondary {
+   color: #513ADE;
+   font-size: 22px;
+   padding: 10px 20px;
+   border-radius: 3px;
+   /* background-color: #513ADE; */
+   border: 1px solid #513ADE;
+   cursor: pointer;
+}
+
+.btn-secondary-small {
+   background-color: transparent;
+   color: #513ADE;
+   font-size: 18px;
+   padding: 4px 12px;
+   border-radius: 3px;
+   border: 1px solid #513ADE;
+   /* border: none; */
    cursor: pointer;
 }
 

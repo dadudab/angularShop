@@ -1,8 +1,8 @@
 <div class="container">
    <ul>
-      <li *ngFor="let option of filteringOptions">
-         <input type="checkbox" id={{option.value}} [value]="option.value">
-         <label for={{option.value}}>{{ option.name }}</label>
+      <li *ngFor="let category of categories">
+         <input type="checkbox" id={{category.value}} [value]="category.value" (click)="onChangeFilter(category.value)">
+         <label for={{category.value}}>{{ category.name }}</label>
       </li>
    </ul>
 </div>

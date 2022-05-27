@@ -100,6 +100,11 @@ h2 {
    margin-top: 10px;
 }
 
+a {
+   text-decoration: none;
+   color: black;
+}
+
 @media screen and (min-width: 768px) {
    li {
       margin: 0;
