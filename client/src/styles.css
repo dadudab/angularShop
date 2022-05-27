@@ -115,6 +115,10 @@ ul {
    height: 30px;
    border-radius: 3px;
    border: 1px solid #808080;
+/* 
+   border: none;
+   box-shadow: 0 0 0.3em gray; */
+
    box-sizing: border-box;
    font-size: 14px;
 }

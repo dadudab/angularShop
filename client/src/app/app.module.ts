@@ -28,6 +28,8 @@ import { ProductsDashboardComponent } from './dashboard/products-dashboard/produ
 import { ChartsModule } from 'ng2-charts';
 import { UpdateProductComponent } from './dashboard/products-dashboard/update-product/update-product.component';
 import { CategoryFilterPipe } from './products/product-filter/category-filter.pipe';
+import { ProductSortComponent } from './products/product-sort/product-sort.component';
+import { ProductSortPipe } from './products/product-sort/product-sort.pipe';
 
 
 @NgModule({
@@ -53,6 +55,8 @@ import { CategoryFilterPipe } from './products/product-filter/category-filter.pi
     ProductsDashboardComponent,
     UpdateProductComponent,
     CategoryFilterPipe,
+    ProductSortComponent,
+    ProductSortPipe,
   ],
   imports: [
     BrowserModule,

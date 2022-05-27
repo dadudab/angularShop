@@ -1,0 +1,7 @@
+<div class="sort-container">
+   <input type="text" class="basic-input">
+   <select name="sort" id="sort-select" (change)="emitSortOption()" [(ngModel)]="selectedSortOption">
+      <option value="" selected>Sort by</option>
+      <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.name }}</option>
+   </select>
+</div>

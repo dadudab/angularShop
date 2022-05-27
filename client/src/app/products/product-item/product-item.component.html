@@ -28,7 +28,7 @@
          <div class="content">
             <h3>{{ productName }}</h3>
             <p class="font-color-secondary">{{ product.user.username }}</p>
-            <h2>$10</h2>
+            <h2>{{ product.price | currency }}</h2>
       </div>
    </a>
 </li>

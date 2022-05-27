@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductListComponent implements OnInit {
 
   @Input() selectedCategories: string[];
+  @Input() selectedSortOption: string;
   products: Product[];
 
   constructor(private route: ActivatedRoute) { }
@@ -21,5 +22,10 @@ export class ProductListComponent implements OnInit {
     // })
     console.log(this.selectedCategories);
     this.products = this.route.snapshot.data.products;
+  }
+
+  receiveSortOption(event) {
+    console.log(event);
+    this.selectedSortOption = event;
   }
 }

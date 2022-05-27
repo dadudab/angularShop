@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { categories } from 'src/app/shared/categories';
 import { Product } from 'src/app/shared/product.model';
 
 @Pipe({
@@ -8,7 +7,7 @@ import { Product } from 'src/app/shared/product.model';
 })
 export class CategoryFilterPipe implements PipeTransform {
 
-  transform(products: Product[], selectedCategories: string[]) {
+  transform(products: Product[], selectedCategories: string[]): any {
     const filteredProducts: Product[] = [];
   
     if(!selectedCategories || selectedCategories.length === 0) {

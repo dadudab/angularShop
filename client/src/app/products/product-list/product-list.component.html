@@ -1,7 +1,8 @@
 <div class="container">
    <!-- <div class="content"> -->
+      <app-product-sort (selectedSortOptionEvent)="receiveSortOption($event)"></app-product-sort>
       <ul>
-         <app-product-item *ngFor="let product of products | categoryFilter: selectedCategories" [product]="product"></app-product-item>
+         <app-product-item *ngFor="let product of products | productSort: selectedSortOption | categoryFilter: selectedCategories" [product]="product"></app-product-item>
          <li *ngIf="products.length === 0">
             <h3>No products found</h3>
          </li>
