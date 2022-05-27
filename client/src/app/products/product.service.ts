@@ -56,6 +56,11 @@ export class ProductService {
       .pipe(catchError(error => this.handleErrorMessage(error)));
   }
 
+  deleteProduct(productId: string) {
+    return this.http.delete<Product[]>(`${this.configUrl}/products/${productId}/delete`)
+      .pipe(catchError(error => this.handleErrorMessage(error)));
+  }
+
   handleError(error: HttpErrorResponse) {
     // if(!error.error.message) {
     //   return throwError('Something went wrong.. Try again later');

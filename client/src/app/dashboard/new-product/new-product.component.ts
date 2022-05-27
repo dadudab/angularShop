@@ -31,7 +31,6 @@ export class NewProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.productCategories = categories;
-    console.log(this.productCategory)
   }
 
   onSelectedFile(event) {

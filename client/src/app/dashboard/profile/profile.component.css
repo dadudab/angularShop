@@ -58,7 +58,7 @@
 }
 
 .chart-container {
-   /* height: 300px; */
+   height: 300px;
 }
 
 #user-info {
@@ -96,5 +96,18 @@
       "user-info first-chart second-chart third-chart"
       "user-info first-chart second-chart third-chart"
       "user-info first-chart second-chart third-chart";
+   }
+
+   .chart-container {
+      height: 100%;
+   }
+
+   #first-chart, #second-chart, #third-chart {
+      margin-left: 10px;
+   }
+
+   #services-info {
+      margin-left: 10px;
+      margin-bottom: 10px;
    }
 }

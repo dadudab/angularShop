@@ -151,6 +151,7 @@ module.exports.updateProduct = async (req, res) => {
 
 module.exports.deleteProduct = async (req, res) => {
   const { productId } = req.params;
+  const userId = req.user._id;
 
   try {
     const product = await Product.findById(productId);
@@ -160,7 +161,11 @@ module.exports.deleteProduct = async (req, res) => {
     }
 
     await Product.findByIdAndDelete(productId);
-    return res.status(200).json({ message: 'Product deleted' });
+    const products = await Product.find({ user: userId })
+      .populate('user');
+    // console.log(products);
+    return res.status(200).json(products);
+    // return res.status(200).json({ message: 'Product deleted' });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: 'Something went wrong' });

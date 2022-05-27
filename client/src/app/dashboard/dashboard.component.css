@@ -25,7 +25,8 @@ a {
 }
 
 a:hover {
-   background-color: #F4F4F2;
+   background-color: #513ADE;
+   /* color: white; */
    cursor: pointer;
 }
 
@@ -43,7 +44,7 @@ li > a > img {
 }
 
 .active-link {
-   background-color: #F4F4F2;
+   background-color: #513ADE;
 }
 
 @media screen and (min-width: 1530px){

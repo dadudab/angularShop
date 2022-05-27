@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } fr
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChartColor, ChartOptions, ChartType } from 'chart.js';
 import { Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, SingleDataSet } from 'ng2-charts';
+import { ProductService } from 'src/app/products/product.service';
 import { Product } from 'src/app/shared/product.model';
 
 @Component({
@@ -17,6 +18,8 @@ export class ProductsDashboardComponent implements OnInit {
   homeProducts = 0;
   carsProducts = 0;
   electronicProducts = 0;
+  isLoading = false;
+  error: string = null;
 
   public pieChartOptions: ChartOptions = {
     responsive: true,
@@ -31,7 +34,10 @@ export class ProductsDashboardComponent implements OnInit {
     backgroundColor: ['red', 'yellow', 'pink', 'green']
   }];
   
-  constructor(private route: ActivatedRoute, private router: Router) { 
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService,
+    private router: Router) { 
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
   }
@@ -47,5 +53,20 @@ export class ProductsDashboardComponent implements OnInit {
         this.categoriesStats.electronicProducts
       ];
     }
+    console.log(this.userProducts);
+  }
+
+  onDeleteProduct(productId: string) {
+    this.isLoading = true;
+    this.error = null;
+    this.productService.deleteProduct(productId).subscribe(response => {
+      console.log(response);
+      this.userProducts = response;
+      this.isLoading = false;
+    }, error => {
+      console.log(error);
+      this.error = error;
+      this.isLoading = false;
+    })
   }
 }

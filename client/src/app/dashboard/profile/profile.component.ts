@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ChartOptions, ChartType } from 'chart.js';
 import { Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, SingleDataSet } from 'ng2-charts';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
+import { User } from 'src/app/shared/user.model';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
 
+  userSub: Subscription;
+  user: User;
 
   public pieChartOptions: ChartOptions = {
     responsive: true,
@@ -23,12 +28,19 @@ export class ProfileComponent implements OnInit {
     backgroundColor: ['red', 'yellow', 'pink', 'green']
   }];
 
-  constructor() {
+  constructor(private authService: AuthService) {
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
    }
 
   ngOnInit(): void {
+    this.userSub = this.authService.user.subscribe(user => {
+      this.user = user;
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.userSub.unsubscribe();
   }
 
 }

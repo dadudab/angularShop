@@ -2,6 +2,7 @@
    <h2>Your products</h2>
 
    <app-error-message *ngIf="!userProducts" [message]="'Something went wrong'"></app-error-message>
+   <app-error-message *ngIf="error" [message]="error"></app-error-message>
    
    <div class="wrapper">
       <div class="container" id="product-list">
@@ -17,6 +18,11 @@
                      <th>Create date</th>
                      <th>Actions</th>
                   </tr>
+                  <p class="font-color-secondary" *ngIf="userProducts.length === 0">
+                     <!-- <a [routerLink]="/dashboard/new-product"> -->
+                        No products found.. Click here to create your own product
+                     <!-- </a>   -->
+                  </p>
                   <tr class="content-row" *ngFor="let product of userProducts">
                      <td><img src={{product.image.imageUrl}} alt=""></td>
                      <td class="font-color-secondary">{{ product.name }}</td>
@@ -25,8 +31,18 @@
                      <td class="font-color-secondary">{{ product.createdDate | date }}</td>
                      <td>
                         <div class="actions">
-                           <button [routerLink]="[product._id, 'update']" class="btn-primary-small">update</button>
-                           <button class="btn-primary-small btn-delete">delete</button>
+                           <div *ngIf="!isLoading">
+                              <button 
+                                 [routerLink]="[product._id, 'update']" 
+                                 class="btn-primary-small">
+                                 update
+                              </button>
+                              <button (click)="onDeleteProduct(product._id)" 
+                                 class="btn-primary-small btn-delete">
+                                 delete
+                              </button>
+                           </div>
+                           <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
                         </div>
                      </td>
                   </tr>

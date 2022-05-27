@@ -6,38 +6,38 @@
       <div id="user-info" class="container">
          <div class="avatar-container">
             <div class="avatar">
-               <span>S</span>
+               <span>{{ user.username[0] }}</span>
             </div>
-            <p>username</p>
+            <p>{{ user.username }}</p>
          </div>
          <div class="user-detail-container">
             <div class="user-detail">
                <h4>ID</h4>
-               <p class="font-color-secondary">some name</p>
+               <p class="font-color-secondary">{{ user.id }}</p>
             </div>
             <div class="user-detail">
                <h4>First Name</h4>
-               <p class="font-color-secondary">some name</p>
+               <p class="font-color-secondary">{{ user.firstName }}</p>
             </div>
             <div class="user-detail">
                <h4>Last Name</h4>
-               <p class="font-color-secondary">some name</p>
+               <p class="font-color-secondary">{{ user.lastName }}</p>
             </div>
             <div class="user-detail">
                <h4>Email</h4>
-               <p class="font-color-secondary">some name</p>
+               <p class="font-color-secondary">{{ user.email }}</p>
             </div>
             <div class="user-detail">
                <h4>City</h4>
-               <p class="font-color-secondary">some name</p>
+               <p class="font-color-secondary">{{ user.city }}</p>
             </div>
             <div class="user-detail">
                <h4>Address</h4>
-               <p class="font-color-secondary">some name</p>
+               <p class="font-color-secondary">{{ user.address }}</p>
             </div>
             <div class="user-detail">
                <h4>Postal Code</h4>
-               <p class="font-color-secondary">some name</p>
+               <p class="font-color-secondary">{{ user.postalCode }}</p>
             </div>
          </div>
          <div class="social-media-container">
