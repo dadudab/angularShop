@@ -1,4 +1,7 @@
-<h1 *ngIf="error">{{ error }}</h1>
+<!-- <h1 *ngIf="error">{{ error }}</h1> -->
+<div class="error-container">
+   <app-error-message *ngIf="error" [message]="error"></app-error-message>
+</div>
 <div  *ngIf="isLoading" class="loading-spinner">
    <app-loading-spinner></app-loading-spinner>
 </div>

@@ -1,5 +1,5 @@
 .container {
-   background-color: #ffffff;
+   background-color: var(--secondary-background);
    padding: 1rem;
    margin-top: 1rem;
    box-shadow: 0 0 0.3em #4d4d4d;

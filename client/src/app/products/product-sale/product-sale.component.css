@@ -31,7 +31,7 @@ button {
 .container {
    width: 90%;
    margin: 2rem auto;
-   background-color: #ffffff;
+   background-color: var(--secondary-background);
    box-shadow: 0 0 0.2em gray;
    border-radius: 3px;
 }

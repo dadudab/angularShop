@@ -8,6 +8,7 @@ const {
   updateProduct,
   deleteProduct,
   getUserProductsStats,
+  createOrder
 } = require('../controllers/products');
 const {
   isAuth,
@@ -34,6 +35,7 @@ router.delete(
   isProductOwner,
   deleteProduct
 );
+router.post('/orders/create-order', isAuth, createOrder);
 
 module.exports = router;
 

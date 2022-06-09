@@ -1,12 +1,17 @@
+.error-wrapper {
+   width: 90%;
+   margin: 1rem auto;
+}
+
 .container {
    width: 90%;
    max-width: 65rem;
    /* background-color: #ebefff; */
-   background-color: #ffffff;
+   background-color: var(--secondary-background);
    /* border: 1px solid black; */
-   margin: 3rem auto;
+   margin: 2rem auto;
    border-radius: 3px;
-   box-shadow: 0 0 0.3em gray;
+   box-shadow: 0 0 0.2em gray;
 }
 
 .detail {
@@ -39,7 +44,7 @@ img {
 
 .desc {
    margin-top: 1rem;
-   color: #686767;
+   color: var(--text-color-secondary);
 }
 
 .seller-detail {
@@ -58,6 +63,7 @@ img {
 .seller-container img  {
    width: 30px;
    height: 30px;
+   filter: var(--filter-color);
 }
 
 

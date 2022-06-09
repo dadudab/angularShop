@@ -2,8 +2,21 @@
    width: 90%;
    max-width: 26rem;
    margin: 3rem auto;
-   background-color: #EBEFFF;
+   /* background-color: #EBEFFF; */
+   /* background-color: red; */
+   box-shadow: 0 0 0.2em gray;
+   border-radius: 5px;
+   background-color: var(--secondary-background);
 }
+
+/* .container {
+   width: 90%;
+   max-width: 26rem;
+   margin: 3rem auto;
+   background-color: #ffffff;
+   box-shadow: 0 0 0.2em gray;
+   border-radius: 5px;
+} */
 
 .loading-spinner {
    display: flex;
@@ -15,6 +28,7 @@
 
 .content {
    padding: 1rem;
+   /* background-color: red; */
 }
 
 h2 {
@@ -30,4 +44,9 @@ h2 {
 button {
    width: 100%;
    margin: 1rem 0;
+}
+
+.error-container {
+   width: 90%;
+   margin: 1rem auto;
 }

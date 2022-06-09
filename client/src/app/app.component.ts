@@ -3,6 +3,7 @@ import { CartService } from './cart/cart.service';
 import { AuthService } from './auth/auth.service';
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { ThemeService } from './theme/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ export class AppComponent implements OnInit{
   title = 'client';
   // theme = 'light-theme';
 
-  constructor(private authService: AuthService
+  constructor(private authService: AuthService,
+    private themeService: ThemeService
     // @Inject(DOCUMENT) private document: Document,
     // private renderer: Renderer2  
   ) {}
@@ -22,6 +24,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.authService.autoLogin();
     // this.initializeTheme();
+    this.themeService.initTheme();
   }
 
   // initializeTheme() {
@@ -31,6 +34,10 @@ export class AppComponent implements OnInit{
   // switchTheme() {
   //   this.document.body.classList.replace(this.theme, 
   //     this.theme === 'light-theme' ? (this.theme = 'dark-theme') : (this.theme = 'light-theme'));
+  // }
+
+  // onChangeTheme() {
+  //   this.themeService.switchTheme();
   // }
 
 }

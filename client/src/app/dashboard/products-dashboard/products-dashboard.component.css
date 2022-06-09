@@ -4,7 +4,7 @@
 /* } */
 
 .container {
-   background-color: #ffffff;
+   background-color: var(--secondary-background);
    padding: 1rem;
    box-shadow: 0 0 0.2em #4d4d4d;
    border-radius: 3px;
@@ -55,8 +55,12 @@ button {
 .actions {
    display: flex;
    flex-direction: column;
-   justify-content: space-between;
+   /* justify-content: space-between; */
 }
+
+/* .actions > button:last-of-type {
+   margin-left: 10px;
+} */
 
 @media screen and (min-width: 1024px) {
 
@@ -66,7 +70,7 @@ button {
 
    #product-list {
       grid-area: product-list;
-      margin-right: 20px;
+      margin-right: 10px;
       height: 700px;
       overflow-y: scroll;
    }
@@ -99,8 +103,12 @@ button {
    }
 
    .actions {
-      display: flex;
+      /* display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: space-between; */
+   }
+
+   .actions > button:first-of-type {
+      margin-bottom: 5px;
    }
 }

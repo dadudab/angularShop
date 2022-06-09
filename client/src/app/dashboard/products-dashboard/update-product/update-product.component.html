@@ -1,10 +1,10 @@
 <div class="entire-page">
    <div class="about-page">
       <h2>Update product</h2>
-      <p class="secondary-text-color">t is a long established fact that a reader will be distracted by 
+      <!-- <p class="secondary-text-color">t is a long established fact that a reader will be distracted by 
          the readable content of a page when looking at its layout. The 
          point of using Lorem
-      </p>
+      </p> -->
       <!-- <app-error-message *ngIf="!isLoading && error" [message]="error"></app-error-message> -->
       <app-error-message *ngIf="error" [message]="error"></app-error-message>
    </div>
@@ -13,10 +13,10 @@
       <form (ngSubmit)="onUpdateProduct(updateProductForm)" #updateProductForm="ngForm">
          <div class="form-control">
             <label for="product-image">Image</label>
-            <p class="secondary-text-color">Allowed image formats: png, jpg</p>
+            <p class="font-color-secondary">Allowed image formats: png, jpg</p>
             <label class="file-input-label" for="product-image">
                <span>Change image</span>
-               <span *ngIf="productFileName" class="secondary-text-color">{{ productFileName }}</span>
+               <span *ngIf="productFileName" class="font-color-secondary">{{ productFileName }}</span>
                <input type="file" id="product-image" name="productImage" (change)="onSelectedFile($event)"
                   ngModel #file="ngModel" accept="image/jpg, image/png">
             </label>
@@ -46,7 +46,7 @@
             <small *ngIf="desc.touched && !desc.valid">Description is required</small>
          </div>
          <div class="actions">
-            <button *ngIf="!isLoading" type="submit" class="btn-primary-small" [disabled]="!updateProductForm.valid">Create</button>
+            <button *ngIf="!isLoading" type="submit" class="btn-primary-small" [disabled]="!updateProductForm.valid">Update</button>
             <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
             <span *ngIf="isSuccess">
                <img class="success-mark" src="../../../../assets/success_mark.png" alt="">
@@ -64,19 +64,19 @@
          </div>
          <div class="product-detail">
             <h4>Name</h4>
-            <p class="secondary-text-color">{{ productName }}</p>
+            <p class="font-color-secondary">{{ productName }}</p>
          </div>
          <div class="product-detail">
             <h4>Price</h4>
-            <p class="secondary-text-color">{{ productPrice | currency }}</p>
+            <p class="font-color-secondary">{{ productPrice | currency }}</p>
          </div>
          <div class="product-detail">
             <h4>Category</h4>
-            <p class="secondary-text-color selected-category">{{ productCategory }}</p>
+            <p class="font-color-secondary selected-category">{{ productCategory }}</p>
          </div>
          <div class="product-detail">
             <h4>Description</h4>
-            <p class="secondary-text-color">{{ productDescription }}</p>
+            <p class="font-color-secondary">{{ productDescription }}</p>
          </div>
       </div>
    </div>

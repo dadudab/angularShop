@@ -1,35 +1,19 @@
-<li>
-   <div *ngIf="error" class="error-message">
-      <app-error-message [message]="error"></app-error-message>
+<li class="product">
+   <div class="image-container">
+      <img src={{cartItem.product.image.imageUrl}} alt={{cartItem.product.name}}>
    </div>
-   <div class="container">
-      <img src={{cartItem.product.imageUrl}} alt={{cartItem.product.name}}>
-      <div class="content">
-         <div class="product-name">
-            <h3>{{ cartItem.product.name }}</h3>
-            <!-- <p class="price">{{ cartItem.product.price | currency}}</p> -->
-         </div>
-         <!-- <div class="product-amount"> -->
-            <!-- <span>+</span> -->
-            <!-- <button class="btn-secondary">+</button> -->
-            <!-- <span>{{ cartItem.amount }}</span> -->
-            <!-- <span>-</span> -->
-            <!-- <button class="btn-secondary">-</button> -->
-         <!-- </div> -->
-         <div class="detail-container">
-            <div *ngIf="isLoading">
-               <app-loading-spinner></app-loading-spinner>
-            </div>
-            <div class="product-amount" *ngIf="!isLoading">
-               <button (click)="onAddToCart(cartItem.product._id)" class="btn-secondary">+</button>
-               <span>{{ cartItem.amount }}</span>
-               <button (click)="onRemoveFromCart(cartItem.product._id)" class="btn-secondary">-</button>
-            </div>
-            <div class="product-price">
-               <p class="price">{{ cartItem.product.price | currency}}</p>
-            </div>
-         </div>
+   <div class="product-detail">
+      <div class="detail">
+         <h3>{{ cartItem.product.name }}</h3>
       </div>
+      <div class="detail price">
+         <p class="font-color-secondary">{{ cartItem.product.price | currency }}</p>
+      </div>
+      <div *ngIf="!isLoading" class="detail quantity">
+         <img (click)="onRemoveFromCart(cartItem.product._id)" src="../../assets/icons8-minus-50.png" alt="minus">
+         <span>{{ cartItem.amount }}</span>
+         <img (click)="onAddToCart(cartItem.product._id)" src="../../assets/icons8-plus-50.png" alt="plus">
+      </div>
+      <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
    </div>
-   <h2 *ngIf="!isLoading && error">{{ error }}</h2>
 </li>

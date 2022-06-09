@@ -35,11 +35,11 @@
                               <button 
                                  [routerLink]="[product._id, 'update']" 
                                  class="btn-primary-small">
-                                 update
+                                 Update
                               </button>
                               <button (click)="onDeleteProduct(product._id)" 
                                  class="btn-primary-small btn-delete">
-                                 delete
+                                 Delete
                               </button>
                            </div>
                            <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

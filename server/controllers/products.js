@@ -101,7 +101,6 @@ module.exports.updateProduct = async (req, res) => {
       await cloudinary.uploader.destroy(previousProduct.image.imageId);
       // console.log(previousProduct.image.imageId);
       
-      
       const cloudinaryResponse = await cloudinary.uploader.upload(image.imageString);
       console.log(cloudinaryResponse);
       
@@ -216,4 +215,15 @@ module.exports.getUserProductsStats = async (req ,res) => {
     console.log(error);
     return res.status(500).json({ message: 'Something went wrong' });
   }
+}
+
+module.exports.createOrder = async (req, res) => {
+  const userId = req.user._id;
+
+  const { price, description } = req.body;
+
+  console.log(price);
+  console.log(description);
+
+  // return res.status(200).json({ price, description });
 }

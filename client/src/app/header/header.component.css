@@ -5,12 +5,12 @@
    justify-content: space-between;
    width: 100%;
    /* background-color: #e0e0e0; */
-   background-color: #ffffff;
+   background-color: var(--header-background);
 }
 
 .logo-link {
    text-decoration: none;
-   color: #000000;
+   color: var(--text-color);
 }
 
 .logo {
@@ -36,7 +36,7 @@
 
 .nav-links > li > a {
    text-decoration: none;
-   color: #000000;
+   color: var(--text-color);
    font-size: 22px;
 }
 
@@ -50,11 +50,10 @@
 }
 
 .burger-line {
-   height: 6px;
+   height: 5px;
    width: 35px;
    border-radius: 10px;
-   background-color: #000000;
-   /* margin-right: 100px; */
+   background-color: var(--text-color);
 }
 
 .cart-container > span {
@@ -67,6 +66,7 @@
 img {
    height: 30px;
    width: 30px;
+   filter: var(--filter-color);
 }
 
 .small-screen-cart {
@@ -85,14 +85,14 @@ img {
    justify-content: space-evenly;
 }
 
-.arrow {
+/* .arrow {
    height: 30px;
    width: 30px;
    background-color: black;
-}
+} */
 
 .avatar {
-   background-color: blue;
+   background-color: #513ADE;
    border-radius: 50%;
    height: 40px;
    width: 40px;
@@ -104,9 +104,32 @@ img {
 .profile-container > p, .avatar > p {
    font-size: 22px;
    /* display: inline; */
+   color: white;
 }
 
-@media screen and (max-width: 1150px) {
+/* @media screen and (max-width: 1150px) {
+} */
+
+.small-screen-profile-link {
+   display: none;
+}
+
+.active-link {
+   background-color: #513ADE;
+   padding: 10px 20px;
+   border-radius: 3px;
+}
+
+/* .nav-links > li > a.active-link {
+   color: white;
+} */
+
+/* .rotate-burger {
+   transform: rotateX(90deg);
+} */
+
+.list-item-profile:hover {
+   cursor: pointer;
 }
 
 @media screen and (max-width: 1000px) {
@@ -118,7 +141,7 @@ img {
       position: absolute;
       top: 8vh;
       left: 0;
-      background-color: #ffffff;
+      background-color: var(--header-background);
       display: flex;
       flex-direction: column-reverse;
       justify-content: flex-end;
@@ -151,9 +174,10 @@ img {
    .nav-links > li > a {
       display: flex;
       padding: 15px 0 15px 30px;
+      transition: all 200ms ease;
    }
    .nav-links > li > a:hover {
-      padding-left: 100px;
+      margin-left: 20px;
    }
 
    .nav-btn button {
@@ -163,10 +187,11 @@ img {
       padding: 15px 0 15px 30px;
       text-align: left;
       color: #513ADE;
+      transition: all 200ms ease;
    }
 
    .nav-btn button:hover {
-      margin-left: 30px;
+      margin-left: 20px;
    }
 
    .cart-container {
@@ -174,6 +199,14 @@ img {
    }
 
    .small-screen-cart {
+      display: block;
+   }
+
+   .list-item-profile {
+      display: none;
+   }
+
+   .small-screen-profile-link {
       display: block;
    }
 }

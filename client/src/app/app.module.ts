@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -30,6 +31,9 @@ import { UpdateProductComponent } from './dashboard/products-dashboard/update-pr
 import { CategoryFilterPipe } from './products/product-filter/category-filter.pipe';
 import { ProductSortComponent } from './products/product-sort/product-sort.component';
 import { ProductSortPipe } from './products/product-sort/product-sort.pipe';
+import { PaypalComponent } from './checkout/paypal/paypal.component';
+import { UserOrdersComponent } from './dashboard/user-orders/user-orders.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -57,6 +61,9 @@ import { ProductSortPipe } from './products/product-sort/product-sort.pipe';
     CategoryFilterPipe,
     ProductSortComponent,
     ProductSortPipe,
+    PaypalComponent,
+    UserOrdersComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +71,8 @@ import { ProductSortPipe } from './products/product-sort/product-sort.pipe';
     HttpClientModule,
     FormsModule,
     RouterModule,
-    ChartsModule
+    ChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

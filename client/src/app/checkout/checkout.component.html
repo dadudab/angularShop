@@ -1,0 +1,90 @@
+<div *ngIf="cart && user" class="wrapper">
+
+   <div class="cart-summary">
+      <h2>Cart</h2>
+      <div class="container">
+         <ul>
+            <li *ngFor="let product of cart.products" class="cart-item-detail">
+               <h3>{{ product.product.name }}</h3>
+               <span>{{ product.product.price | currency }}</span>
+               <span>x{{ product.amount }}</span>
+            </li>
+         </ul>
+         <div class="total-amount">
+            <h3>Total</h3>
+            <h3>{{ cart.totalAmount | currency}}</h3>
+         </div>
+      </div>
+      <button class="btn-secondary-small btn-back">Back to cart</button>
+   </div>
+
+   <div *ngIf="!isPayment" class="order-summary">
+      <h2>Order</h2>
+      <div class="container">
+         <form (ngSubmit)="onSubmit(orderForm)" #orderForm="ngForm">
+            <h3 class="title">Contact detail</h3>
+            <div class="full-name-container">
+               <div class="form-control">
+                  <label for="first-name">First name</label>
+                  <input type="text" id="first-name" name="firstName" class="basic-input" [value]="user.firstName" disabled>
+               </div>
+               <div class="form-control">
+                  <label for="last-name">Last name</label>
+                  <input type="text" id="last-name" name="lastName" class="basic-input" [value]="user.lastName" disabled>
+               </div>
+            </div>
+            <div class="form-control">
+               <label for="email">Email address</label>
+               <input type="email" id="email" name="email" class="basic-input"
+                  ngModel #email="ngModel" required 
+                  [value]="user.city">
+               <small *ngIf="!email.valid && email.touched">Email is not valid</small>
+            </div>
+            <div class="form-control">
+               <label for="phone-number">Phone number</label>
+               <input type="text" id="phone-number" name="phoneNumber" class="basic-input"
+                  ngModel #phoneNumber="ngModel" required>
+               <small *ngIf="!phoneNumber.valid && phoneNumber.touched">Phone number is required</small>
+            </div>
+            <h3 class="title">Shipping detail</h3>
+            <div class="form-control">
+               <label for="city">City</label>
+               <input type="text" id="city" name="city" class="basic-input"
+                  ngModel #city="ngModel" required>
+               <small *ngIf="!city.valid && city.touched">City is required</small>
+            </div>
+
+
+            <div class="full-address-container">
+
+               
+               <div class="form-control">
+                  <label for="address">Address</label>
+                  <input type="text" id="address" name="address" class="basic-input"
+                     ngModel #address="ngModel" required>
+                  <small *ngIf="!address.valid && address.touched">Address is required</small>
+               </div>
+               <div class="form-control">
+                  <label for="postal-code">Postal code</label>
+                  <input type="text" id="postal-code" name="postalCode" class="basic-input"
+                     ngModel #postalCode="ngModel" [value]="user.postalCode" required>
+                  <small *ngIf="!postalCode.valid && postalCode.touched">Postal code is required</small>
+               </div>
+               
+            </div>
+
+            <button 
+               [disabled]="!orderForm.valid" 
+               type="submit" 
+               class="btn-primary-small btn-payment"
+               >Payment
+            </button>
+         </form>
+      </div>
+   </div>
+
+   <div *ngIf="isPayment" class="paypal-container">
+      <app-paypal [orderData]="orderData" [amount]="cart.totalAmount"></app-paypal>
+   </div>
+
+</div>

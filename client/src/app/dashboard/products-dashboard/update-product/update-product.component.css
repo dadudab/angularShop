@@ -1,14 +1,11 @@
 .container {
-   background-color: #f7f7f7;
+   background-color: var(--secondary-background);
    padding: 1rem;
    margin-top: 1rem;
    box-shadow: 0 0 0.3em #4d4d4d;
    border-radius: 3px;
 }
 
-.secondary-text-color {
-   color: #4d4d4d;
-}
 
 .form-control {
    margin-top: 10px;
@@ -33,12 +30,14 @@ input[type="file"] {
    border: 1px solid gray;
    border-radius: 3px;
    cursor: pointer;
-   background-color: white;
+   background-color: var(--secondary-background);
 }
 
 textarea {
    display: block;
    width: 100%;
+   color: var(--text-color);
+   background-color: var(--secondary-background);
 }
 
 select { 
@@ -46,6 +45,8 @@ select {
    border-radius: 3px;
    border: 1px solid #808080;
    height: 30px;
+   background-color: var(--secondary-background);
+   color: var(--text-color);
 }
 
 textarea {
@@ -105,7 +106,7 @@ textarea:focus {
    }
    .product-summary {
       grid-area: product-summary;
-      margin-left: 20px;
+      margin-left: 10px;
       height: 700px;
       overflow-y: scroll;
    }

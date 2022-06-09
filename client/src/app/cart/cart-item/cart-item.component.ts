@@ -1,5 +1,5 @@
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CartService } from './../cart.service';
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cart-item',
@@ -8,9 +8,9 @@ import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 })
 export class CartItemComponent implements OnInit {
 
+  @Output() errorEvent = new EventEmitter<string>();
   @Input() cartItem;
   isLoading = false;
-  error: string = null;
 
   constructor(private cartService: CartService) { }
 
@@ -19,26 +19,36 @@ export class CartItemComponent implements OnInit {
   }
 
   onAddToCart(productId: string) {
+    this.errorEvent.emit('');
     this.isLoading = true;
-    this.error = null;
     this.cartService.addToCart(productId).subscribe(response => {
-      console.log(response);
       this.isLoading = false;
     }, error => {
-      this.error = error.error.message;
+      this.errorEvent.emit(error);
       this.isLoading = false;
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
     })
   }
 
   onRemoveFromCart(productId: string) {
+    this.errorEvent.emit('');
     this.isLoading = true;
-    this.error = null;
     this.cartService.removeFromCart(productId).subscribe(response => {
       this.isLoading = false;
     }, error => {
-      this.error = error.error.message;
+      this.errorEvent.emit(error);
       this.isLoading = false;
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
     })
   }
+
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { categories } from 'src/app/shared/categories';
+
 @Component({
   selector: 'app-product-filter',
   templateUrl: './product-filter.component.html',

@@ -2,7 +2,7 @@
    width: 90%;
    max-width: 26rem;
    margin: 3rem auto;
-   background-color: #ffffff;
+   background-color: var(--secondary-background);
    box-shadow: 0 0 0.2em gray;
    border-radius: 5px;
 }
@@ -28,6 +28,11 @@ h2 {
 button {
    width: 100%;
    margin: 1rem 0;
+}
+
+.error-container {
+   width: 90%;
+   margin: 1rem auto;
 }
 
 @media screen and (min-width: 550px) {

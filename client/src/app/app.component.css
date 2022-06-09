@@ -1,0 +1,19 @@
+/* .main {
+   min-height: 92vh;
+} */
+
+.header-body-wrapper {
+   min-height: 100vh;
+}
+
+/* .dark-theme {
+   --filter-color: brightness(0) invert(1);
+}
+
+.light-theme {
+   --filter-color: brightness(0) invert(0);
+} */
+/* 
+.footer > img {
+   filter: var(--filter-color);
+} */

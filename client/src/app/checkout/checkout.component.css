@@ -1,0 +1,159 @@
+.wrapper {
+   padding: 1rem;
+}
+
+.container {
+   width: 100%;
+   padding: 1rem;
+   margin-top: 0.5rem;
+   background-color: var(--secondary-background);
+   border-radius: 3px;
+   box-shadow: 0 0 0.2em gray;
+}
+
+h3 {
+   width: fit-content;
+}
+
+.cart-item-detail {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   margin-top: 0.7rem;
+}
+
+.cart-item-detail:first-of-type {
+   margin-top: 0;
+}
+
+.total-amount {
+   margin-top: 1rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.btn-back {
+   margin-top: 0.5rem;
+   width: 100%;
+}
+
+.order-summary {
+   margin-top: 1rem;
+}
+
+.form-control {
+   margin-top: 0.5rem;
+}
+
+.form-control:first-of-type {
+   margin-top: 0;
+}
+
+.form-control > input {
+   display: block;
+   width: 100%;
+}
+
+.title {
+   margin-bottom: 0.8rem;
+}
+
+.title:last-of-type {
+   margin-top: 1rem;
+}
+
+.policy-checkbox > input {
+   margin-left: 0;
+   height: 20px;
+   width: 20px;
+}
+
+.policy-checkbox {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   margin-top: 0.5rem;
+}
+
+.btn-payment {
+   width: 100%;
+   margin-top: 0.8rem;
+}
+
+input:disabled {
+   cursor: not-allowed;
+}
+
+.paypal-container {
+   margin-top: 2rem;
+}
+
+
+
+@media screen and (min-width: 600px) {
+   .cart-item-detail > h3 {
+      width: 45%;
+   }
+
+   .cart-item-detail > span {
+      width: 20%;
+      text-align: right;
+   }
+   
+
+   .cart-item-detail {
+      margin-top: 0.2rem;
+      flex-direction: row;
+      justify-content: space-between;
+      /* color: gray; */
+   }
+   
+   .full-name-container > .form-control {
+      width: 47%;
+      margin: 0;
+   }
+
+   .full-name-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+   }
+
+   .full-address-container > .form-control {
+      width: 30%;
+      margin: 0;
+   }
+
+   .full-address-container > .form-control:first-of-type {
+      width: 64%;
+      margin: 0;
+   }
+
+   .full-address-container {
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+   }
+
+
+   @media screen and (min-width: 1024px) {
+      .cart-summary {
+         width: 30%;
+      }
+
+      .order-summary {
+         width: 60%;
+         margin: 0;
+      }
+
+      .wrapper {
+         max-width: 80rem;
+         margin: 1rem auto;
+         display: flex;
+         justify-content: space-evenly;
+      }
+   }
+}
+

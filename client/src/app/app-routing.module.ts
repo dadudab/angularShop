@@ -17,6 +17,9 @@ import { UserProductsResolver } from './dashboard/products-dashboard/user-produc
 import { CategoriesStatisticsResolver } from './dashboard/products-dashboard/categories-statistics-resolver.service';
 import { UpdateProductComponent } from './dashboard/products-dashboard/update-product/update-product.component';
 import { ProductResolver } from './products/product-detail/product-resolver.service';
+import { UserOrdersComponent } from './dashboard/user-orders/user-orders.component';
+import { UserOrderResolver } from './dashboard/user-orders/user-orders-resovler.service';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 const routes: Routes = [
@@ -45,9 +48,15 @@ const routes: Routes = [
       }
     },
     {
+      path: 'my-orders', component: UserOrdersComponent, resolve: { userOrders: UserOrderResolver }
+    },
+    {
       path: '', redirectTo: 'profile', pathMatch: 'full'
-    }
+    },
   ]},
+  {
+    path: 'checkout', component: CheckoutComponent
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },  
 ]
 

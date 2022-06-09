@@ -1,17 +1,61 @@
-<app-error-message *ngIf="!isLoading && error" [message]="error"></app-error-message>
-
-<h1 *ngIf="isLoading">Loading...</h1>
-
-<div *ngIf="!error && !isLoading && cart" class="container">
-   <div class="wrapper">
-      <ul>
-         <!-- <li *ngFor="let product of cart.products">
-            <h1>{{product.product.name }} x{{product.amount}}</h1>
-            <button (click)="onAddToCart(product.product._id)">Add to cart</button>
-         </li> -->
-         <app-cart-item *ngFor="let cartItem of cart.products" [cartItem]="cartItem"></app-cart-item>
-      </ul>
-      <h1 *ngIf="cart.products.length === 0">Your cart is empty</h1>
-      <h3>{{ cart.totalAmount }}</h3>
+<div *ngIf="cart" class="wrapper">
+   
+   
+   <div class="cart-wrapper">
+      <app-error-message *ngIf="errorMessage" [message]="errorMessage"></app-error-message>
+      
+      <h2>Shopping cart</h2>
+      <div class="container">
+         <ul class="cart-products">
+            <li *ngIf="cart.totalProducts === 0">
+               <p class="font-color-secondary">No items in cart</p>
+            </li>
+            <app-cart-item
+               (errorEvent)="receiveError($event)"
+               *ngFor="let product of cart.products"
+               [cartItem]="product"
+               class="cart-item"
+            >
+            </app-cart-item>
+         </ul>
+      </div>
    </div>
+   
+   <div class="order-wrapper">
+
+      
+      <h2>Order summary</h2>
+      <div class="container order-summary">
+         <div class="summary">
+            <span>Subtotal</span>
+            <span>{{ cart.totalAmount | currency }}</span>
+         </div>
+         <div class="summary shipping">
+            <span>Shipping</span>
+            <span>
+               <span class="shipping-sale">$10</span>
+               $0.00
+            </span>
+         </div>
+         <div class="summary total">
+            <h3>Total</h3>
+            <h3>{{ cart.totalAmount | currency }}</h3>
+         </div>
+         <button 
+            (click)="onRedirectToCheckout()"
+            class="btn-primary-small" 
+            [disabled]="cart.totalProducts === 0">
+            Checkout now
+         </button>
+         <button (click)="onRedirectToProducts()" class="btn-secondary-small">Continue shopping</button>
+      </div>
+      <p class="font-color-secondary">Payment methods</p>
+      
+      
+   </div>
+   
 </div>
+   
+
+
+<!-- <app-paypal></app-paypal> -->

@@ -4,14 +4,28 @@
       </a>
       <div class="nav-links-container" [class.side-bar-open]="isSidebarOpen === true">
          <ul class="nav-links">
+            <li *ngIf="isAuth" class="small-screen-profile-link">
+               <a routerLink="/dashboard/profile" 
+                  routerLinkActive="active-link"
+                  (click)="onCloseSidebar()"
+                  >
+               Profile</a>
+            </li>
             <li>
-               <a routerLink="/products">Products</a>
+               <a routerLink="/products" 
+                  routerLinkActive="active-link"
+                  (click)="onCloseSidebar()">
+               Products</a>
             </li>
             <li>
                <a href="#">About</a>
             </li>
             <li>
                <a href="#">Contact</a>
+            </li>
+            <li>
+               <!-- <img src="/assets/moon-svgrepo-com.svg" alt=""> -->
+               <button (click)="onChangeTheme()">theme</button>
             </li>
          </ul>
          <ul class="nav-links">
@@ -25,24 +39,25 @@
                </div>
             </li>
             <li *ngIf="!isAuth">
-               <a routerLink="/registration">Register</a>
+               <a routerLink="/registration" (click)="onCloseSidebar()">Register</a>
             </li>
-            <li *ngIf="isAuth">
+            <li *ngIf="isAuth" class="list-item-profile" (click)="onNavigateToProfile()">
                <div class="profile-container">
                   <div class="avatar">
                      <p>{{ user.username[0] }}</p>
                   </div>
                   <div>
                      <p style="font-size: 22px;">Profile</p>
-                     <span class="arrow"></span>
+                     <!-- <span class="arrow"></span> -->
                   </div>
                </div>
             </li>
+            <li></li>
             <li *ngIf="!isAuth" class="nav-btn">
-               <button type="button" class="btn-primary" (click)="onLogin()">Login</button>
+               <button type="button" class="btn-primary" (click)="onNavigateToLogin()" (click)="onCloseSidebar()">Login</button>
             </li>
             <li *ngIf="isAuth" class="nav-btn">
-               <button type="button" class="btn-primary" (click)="onLogout()">Logout</button>
+               <button type="button" class="btn-primary" (click)="onLogout()" (click)="onCloseSidebar()">Logout</button>
             </li>
          </ul>
       </div>
@@ -53,7 +68,7 @@
          <span *ngIf="!isAuth">0</span>
          <span *ngIf="isAuth">{{ cartTotalProducts }}</span>
       </div>
-      <div class="burger" (click)="onSidebarOpen()">
+      <div class="burger" (click)="onSidebarTrigger()">
          <div class="burger-line"></div>
          <div class="burger-line"></div>
          <div class="burger-line"></div>

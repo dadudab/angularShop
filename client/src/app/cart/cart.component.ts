@@ -2,7 +2,7 @@ import { Cart } from './../shared/cart.model';
 import { Subscription } from 'rxjs';
 import { CartService } from './cart.service';
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { take, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,26 +13,34 @@ export class CartComponent implements OnInit, OnDestroy{
 
   cartSub: Subscription;
   cart: Cart;
-  isLoading = false;
-  error: string = null;
+  @Input() errorMessage: string;
 
-  constructor(private cartService: CartService) { }
+  constructor(
+    private cartService: CartService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.getInitCart();
-    console.log(this.cart);
+    this.getUserCart();
   }
 
-  getInitCart() {
-    this.error = null;
-    this.isLoading = true;
-    this.cartSub = this.cartService.cart.subscribe(response => {
-      this.cart = response;
-      this.isLoading = false;
-    }, error => {
-      this.error = error.error.message;
-      this.isLoading = false;
+  getUserCart() {
+    this.cartSub = this.cartService.cart.subscribe(cart => {
+      this.cart = cart;
     })
+  }
+
+  onRedirectToProducts() {
+    this.router.navigate(['/products']);
+  }
+
+  onRedirectToCheckout() {
+    this.router.navigate(['/checkout']);
+  }
+
+  receiveError(event) {
+    this.errorMessage = event;
+    console.log(event)
   }
 
   ngOnDestroy(): void {

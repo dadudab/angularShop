@@ -4,6 +4,7 @@ import { AuthService } from './../auth/auth.service';
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ThemeService } from '../theme/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   cartSub: Subscription;
   cartTotalProducts: number;
 
-  constructor(private router: Router, private authService: AuthService, private cartService: CartService) { }
+  constructor(
+    private router: Router, 
+    private authService: AuthService, 
+    private cartService: CartService,
+    private themeService: ThemeService
+  ) { }
 
   ngOnInit(): void {
     console.log(this.isAuth);
@@ -37,16 +43,28 @@ export class HeaderComponent implements OnInit, OnDestroy {
     console.log('header on init triggered')
   }
 
-  onSidebarOpen() {
+  onSidebarTrigger() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
 
-  onLogin() {
+  onCloseSidebar() {
+    this.isSidebarOpen = false;
+  }
+
+  onNavigateToLogin() {
     this.router.navigate(['/login']);
   }
 
   onLogout() {
     this.authService.logout();
+  }
+
+  onNavigateToProfile() {
+    this.router.navigate(['/dashboard/profile']);
+  }
+
+  onChangeTheme() {
+    this.themeService.switchTheme();
   }
 
   ngOnDestroy(): void {

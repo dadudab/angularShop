@@ -1,15 +1,15 @@
 <div class="entire-page">
    <div class="about-page">
       <h2>Create product</h2>
-      <p class="secondary-text-color">t is a long established fact that a reader will be distracted by 
+      <!-- <p class="secondary-text-color">t is a long established fact that a reader will be distracted by 
          the readable content of a page when looking at its layout. The 
          point of using Lorem
-      </p>
+      </p> -->
       <app-error-message *ngIf="!isLoading && error" [message]="error"></app-error-message>
    </div>
    <div class="container about-sales">
       <h3>About sales</h3>
-      <p class="secondary-text-color">
+      <p class="font-color-secondary">
          s simply dummy text of the printing and typeset
          ting industry. Lorem Ipsum has been the industry
          's standard dummy text ever since the 1500s, whe
@@ -84,19 +84,19 @@
          </div>
          <div class="product-detail">
             <h4>Name</h4>
-            <p class="secondary-text-color">{{ productName }}</p>
+            <p class="font-color-secondary">{{ productName }}</p>
          </div>
          <div class="product-detail">
             <h4>Price</h4>
-            <p class="secondary-text-color">{{ productPrice | currency }}</p>
+            <p class="font-color-secondary">{{ productPrice | currency }}</p>
          </div>
          <div class="product-detail">
             <h4>Category</h4>
-            <p class="secondary-text-color selected-category">{{ productCategory }}</p>
+            <p class="font-color-secondary selected-category">{{ productCategory }}</p>
          </div>
          <div class="product-detail">
             <h4>Description</h4>
-            <p class="secondary-text-color">{{ productDescription }}</p>
+            <p class="font-color-secondary">{{ productDescription }}</p>
          </div>
       </div>
    </div>

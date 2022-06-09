@@ -1,0 +1,56 @@
+<h2>Your orders</h2>
+
+<!-- <div class="container" *ngFor="let order of userOrders">
+   <h3>Products</h3>
+   <ul>
+      <li class="order-products" *ngFor="let product of order.products">
+         <span class="font-color-secondary">{{product.product.name}}</span>
+         <span class="font-color-secondary">x{{product.amount}}</span>
+      </li>
+   </ul>
+   <h3>Shipping address</h3>
+   <div class="shipping-detail">
+      <div class="shipping-data">
+         <h4>City</h4>
+         <p class="font-color-secondary">{{ order.shippingData.city }}</p>
+      </div>
+      <div class="shipping-data">
+         <h4>Address</h4>
+         <p class="font-color-secondary">{{ order.shippingData.address }}</p>
+      </div>
+      <div class="shipping-data">
+         <h4>Postal code</h4>
+         <p class="font-color-secondary">{{ order.shippingData.postalCode }}</p>
+      </div>
+   </div>
+</div> -->
+
+<div class="container">
+   <ul>
+      <li class="order-detail" *ngFor="let order of userOrders">
+         <div class="date">
+            <p>{{ order.date | date }}</p>
+         </div>
+         <h3>Ordered products</h3>
+         <ul class="font-color-secondary">
+            <li class="product-detail" *ngFor="let product of order.products">
+               <span>{{ product.product.name }}</span>
+               <span>{{ product.product.price | currency }} </span>
+               <span>x{{ product.amount }}</span>
+            </li>
+            <div class="total-amount">
+               <span>Total </span>
+               <span>{{ order.totalAmount | currency }}</span>
+            </div>
+         </ul>
+         <h3>Shipping address</h3>
+         <div class="shipping-detail font-color-secondary">
+            <p>{{ order.merchantData.email }}</p>
+            <p>{{ order.merchantData.phoneNumber }}</p>
+            <p>{{ order.shippingData.city}}</p>
+            <p>{{ order.shippingData.address }} {{ order.shippingData.postalCode }}</p>
+         </div>
+         <!-- <h3>Ordered date</h3> -->
+      </li>
+   </ul>
+</div>

@@ -2,6 +2,7 @@ import { ProductService } from './../product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/shared/product.model';
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/cart/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -12,48 +13,37 @@ export class ProductDetailComponent implements OnInit {
 
   // productId: string;
   product: Product;
-  // isLoading = false;
-  // error: string = null;
+  isLoading = false;
+  error: string = null;
 
   constructor(
     private route: ActivatedRoute, 
-    private productService: ProductService,
+    private cartService: CartService,
     private router: Router
     ) { }
 
   ngOnInit(): void {
-    // this.isLoading = true;
-    // this.error = null;
-    // this.productId = this.route.snapshot.paramMap.get('productId');
-    // this.getProductById(this.productId);
     this.product = this.route.snapshot.data.product;
     console.log(this.product);
   }
 
-  // getProductById(id) {
-  //   this.productService.getProductById(id).subscribe(response => {
-  //     this.product = response;
-  //     console.log(this.product);
-  //     this.isLoading = false;
-  //     this.error = null;
-  //   }, error => {
-  //     console.log(error);
-  //     this.error = error.error.message;
-  //     this.isLoading = false;
-  //   })
-  // }
-
-  // getProductById(id) {
-  //   this.productService.getProductById(id).subscribe(response => {
-  //     console.log('HTTP response ', response);
-  //     this.product = response;
-  //     this.isLoading = false;
-  //   }, error => {
-  //     console.log('HTTP error ', error);
-  //     this.error = error;
-  //     this.isLoading = false;
-  //   })
-  // }
+  onAddToCart(productId: string) {
+    this.error = null;
+    this.isLoading = true;
+    this.cartService.addToCart(productId).subscribe(response => {
+      console.log(response);
+      this.isLoading = false;
+    }, error => {
+      this.error = error;
+      this.isLoading = false;
+      console.log(error);
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    })
+  }
 
   onBackToProducts() {
     this.router.navigate(['/products']);

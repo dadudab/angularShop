@@ -122,6 +122,6 @@ export class AuthService {
     this.autoLogout(tokenExpiresIn);
     localStorage.setItem('token', token);
     localStorage.setItem('tokenExpirationDate', JSON.stringify(tokenExpirationDate));
-    // this.cartService.initialCart(token);
+    this.router.navigate(['/products']);
   }
 }

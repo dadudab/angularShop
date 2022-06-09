@@ -1,13 +1,14 @@
 <div class="container">
+   <!-- <button (click)="toggleText()">Toggle</button> -->
    <div class="wrapper">
-      <div class="content">
+      <div class="content" @flyInOut>
          <h1>Shopping Online</h1>
          <p>Lorem ipsum dolor sit amet consectetur, 
             adipisicing elit. Soluta totam dolorum ipsa atque dolor ducimus a
             quaerat mollitia officiis ratione earum animi tempora corrupti repellat, 
             iusto aspernatur pariatur adipisci temporibus?
          </p>
-         <button type="button" class="btn-primary">Start now</button>
+         <button type="button" class="btn-primary" (click)="onNavigateToProducts()">Start now</button>
       </div>
       <div class="image">
          <img src="../../assets/right_transparent_img.png" alt="asd">

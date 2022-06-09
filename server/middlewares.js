@@ -1,4 +1,4 @@
-const { userSchema, productSchema } = require('./schema');
+const { userSchema, productSchema, orderSchema } = require('./schema');
 const jwt = require('jsonwebtoken');
 const User = require('./models/user');
 const Product = require('./models/product');
@@ -20,6 +20,15 @@ module.exports.validateProduct = (req, res, next) => {
   }
   return next();
 };
+
+module.exports.validateOrder = (req, res,next) => {
+  const { error } = orderSchema.validate(req.body);
+
+  if(error) {
+    return res.status(422).json({ message: error.message });
+  }
+  return next();
+}
 
 module.exports.isAuth = async (req, res, next) => {
   try {
